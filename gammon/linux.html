@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+ "http://www.w3.org/TR/PR-html40/loose.dtd">
+<HTML lang="ja">
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=Shift_JIS">
+  <TITLE>ギャモン with Linux</TITLE>
+  <META name="author" content="Katsutoshi Seki">
+  <META name="copyright" content="&copy; 1998 Katsutoshi Seki">
+  <LINK REV=MADE HREF="mailto:seki@ylug.org">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="gammon.css">
+</HEAD>
+
+<body>
+
+<div align=right><a href="index.html"><img src="../icons/logo.png" alt="関勝寿の自作詰将棋展" width=85 height=39 border=0></a></div>
+
+<H1>ギャモン with Linux</H1>
+
+<p>
+GamesGrid で遊ぶのにも、Snowie, Jellyfish を動かすのにも、
+Windows を使っている必要があります。
+ここでは、Windows ユーザー以外の方を対象に、バックギャモンを
+楽しむ方法について記述しようと思います。
+しかし、Windows	以外のプラットフォームといっても、マックを
+はじめたくさんの環境があるため、ここでは私が使用している
+Linux に、特に対象をしぼります。
+マック、FreeBSD、その他のプラットフォームについて、情報を
+集めているところがあればリンク集を作成するつもりです。
+</p>
+
+<H2>ネットワーク対戦</H2>
+
+<p>
+JAVA を使っているサーバーであれば、Netscape Communicator を
+インストールすれば楽しむことが可能です。私も、たまに
+Linux 環境から
+<a href="http://play.yahoo.co.jp/">Yahoo</a>
+に接続しています。ただし、日本語入力の設定をきちんとしていないため
+(だって、調べるの面倒なんだもん (^^;)、チャットはすべてローマ字で
+行っています。sekik から、「yorosiku」などと話かけられたら、
+今は Linux から接続しているんだな、と思ってください。
+</p>
+
+<p>
+Java を使わない方法となると、Linux で動くクライアントソフトを
+使うサーバーになりますが、存在を確認しているのは現在のところ
+<a href="http://www.fibs.com/">FIBS</a>
+のみです。いずれ、使用レポートを行いたいと思っています。
+</p>
+
+<h2>コンピュータ対戦</h2>
+
+<h3><a href="http://gnu.nucba.ac.jp/software/gnubg/gnubg.html" name="GNU">GNU Backgammon</a></h3>
+
+<p>
+ダウンロードできないが、
+<a href="http://www.cs.arizona.edu/people/gary/backgammon/board.jpg">スクリーンショット</a>
+を見る限りではいい感じ。
+とりあえず、Web サイトの一部を翻訳しておくことにする(2001年1月23日)。
+今後の進展を見守りたい。
+</p>
+
+<blockquote>
+<!-- GNU Backgammon (gnubg) plays and analyses backgammon games and matches. 
+It is currently a work-in-progress. When it is finished, it will be able to play and analyse cubeless and cubeful games and tournament matches, evaluate and roll out positions, tune its own evaluation functions using either TD or supervised training, maintain databases of positions for training and other purposes, and more. -->
+
+<P>
+GNU Backgammon (gnubg) は、バックギャモンのゲームとマッチをプレイし、解析する。
+現在開発の途中である。
+完成すると、キューブ有りのゲーム、キューブ無しのゲーム、ポイントマッチの試合と解析ができるようになり、また、
+<a href="http://www.research.ibm.com/massive/tdl.html">TD</a>
+や、教師付き訓練 (supervised training) によって自分自身の評価関数をチューニングすることができ、
+さらにトレーニングなどのためのポジションデータベースを管理することができるなど、
+他にもいろいろな機能がある。
+</p>
+
+<!-- It will be extensible on platforms where Guile is available, so that the user can program it to answer sophisticated questions like "How many chequers must Black have borne off in positions like this one to be able to accept a double?" and automate complicated rollout tasks. It will be driven by a command-line interface, and will display an ASCII rendition of a board on text-only terminals, but will also allow the user to play games and manipulate positions with an X11 board window (jpeg 95k) where available. -->
+
+<p>
+<a href="http://www.gnu.org/software/guile/guile.html">Guile</a>
+が動く環境に移植可能で、そのためユーザーは「このようなポジションでダブルを受けるためには、黒は何枚のチェッカーをベアオフしている必要があるか？」といったような複雑な質問に対して答えることのできるプログラムを作成可能である。
+コマンドラインインターフェイスを使い、テキストの表示しかできないターミナルに
+アスキー文字にてボードを表示するが、X11 が動くところでは
+<a href="http://www.cs.arizona.edu/people/gary/backgammon/board.jpg">ボードの図</a>
+を描写可能である。
+</p>
+
+<!-- It currently plays at about the level of a strong intermediate flight tournament player (rated in the mid 1700s on FIBS, the First Internet Backgammon Server -- around the 90th percentile) and is gradually improving; it should be somewhat stronger than this when released.
+Since almost all of the CPU time required during supervised training is spent performing rollouts, and rollouts can easily be performed in parallel, it is hoped that users will be able to pool rollout results and collectively train it to a level stronger than any individual could obtain.
+-->
+
+<p>
+現在、中級国際トーナメントの強い選手程度の強さ(FIBS では 1700点代の中ごろ、上位１割程度)であり、徐々に強くなっている。
+リリースされるときには、今よりはいくらか強くなっているだろう。
+教師付き訓練の際に費される CPU 時間のほとんどはロールアウトに使われていて、
+複数のロールアウトを同時に行うことは簡単にできるので、
+ユーザーがロールアウトの結果を蓄積して、人間が到達できるいかなるレベルよりも
+強くすることが期待される。
+</p>
+
+<!--
+If you can tolerate the rough edges, a pre-release version is available at ftp://ftp.cs.arizona.edu/people/gary/gnubg-0.0.tar.gz. You can also compete against a recent version of gnubg on FIBS; it plays there under the name "gnu". 
+-->
+
+<p>
+荒削りなプレリリースバージョンは
+<a href="ftp://ftp.cs.arizona.edu/people/gary/gnubg-0.0.tar.gz">ftp://ftp.cs.arizona.edu/people/gary/gnubg-0.0.tar.gz</a>
+から入手可能である。
+最新の gnubg と、FIBS で対戦することもできる。
+"gnu" という名前で入っている。
+</p>
+
+<!-- Please send comments to Gary Wong <gary@cs.arizona.edu>. -->
+<p>
+コメントは Gary Wong &lt;gary@cs.arizona.edu&gt; へどうぞ。
+</p>
+
+</blockquote>
+
+
+<h3><a name="xgammon">xgammon</a></h3>
+
+<p>
+ダウンロードする場所については、また調べておきます。
+Debian の方は、apt-get install xgammon としてください。
+私が知る限りでは、Linux でギャモンをするプログラムはこれだけです
+<a href="#1"><sup>1)</sup></a>。
+このプログラムの強さについて、ある程度対戦を重ねてみて評価してみたり
+しようかな、と思ってみたりはしているのですが、まだ自分がそれほど
+強くないため相手の強さの評価がなかなかできないことと、十分に
+対戦する時間が取れないため、戦力評価はしばらく保留としておきます。
+</p>
+
+<p>
+xgammon は、たしかに Snowie などと比べるとずっと見劣りがしますが、
+きちんとロールアウトがついているところが洒落ています。
+ただ、ロールアウトといっても、３回ロールアウトするといったような、
+ちょっとしたお遊びです。
+</p>
+
+<p>
+そのうち、スクリーンショットでもとりましょう。
+とはいっても、まだやり方はよく分かっていません。
+</p>
+
+<p class="note">
+<a name="1">1)</a>
+もちろん、tty の backgammon なるプログラムもありますが、
+さすがにこれで実際にゲームをするのはしんどいでしょう。
+やったことありません。
+</p>
+
+<h2>私の環境</h2>
+
+<p>
+<a href="../linux/index.html">Linux インストールメモ</a>
+なるものをつけかけていますが、最近全然更新していません。
+環境は、ここに書かれているものとはかなり変わっています。
+基本的には、Debian です。最近は、Debian 以外ほとんど触って
+いません。あらゆるマシンを Debian 化しつつあります。
+</p>
+
+<h2>終わりに</h2>
+
+<p>
+Linux でバックギャモンをもっと楽しみたい！というマニアックな
+ニーズがどの程度あるかがまったく未知数、というよりも、
+がんばって作成してもたぶん読む人はいないだろうという判断から、
+あまり気合いをいれて作っていません。
+そういうニーズがあるようでしたら、もう少しまともに書いて
+みようとは思いますので、関心のある方は
+<a href="../message.html">メッセージ</a>
+をいただけたりすると嬉しいです。
+仲間がある程度いるようでしたら、掲示板でもメーリングリストでも
+なんでも作ります。
+</p>
+
+<hr>
+
+<p>
+<a href="index.html">戻る</a>
+</p>
+
+</body>
+</html>

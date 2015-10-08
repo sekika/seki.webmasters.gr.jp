@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+        "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+ <head>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-2022-JP">
+  <title>Linux on Mebius PC-PJ2</title>
+  <META NAME="author" LANG="ja" CONTENT="Katsutoshi Seki">
+  <META NAME="copyright" CONTENT="Katsutoshi Seki">
+  <META NAME="DESCRIPTION" CONTENT="Linux on Mebius PC-PJ2">
+  <META NAME="keywords" CONTENT="Katsutoshi Seki">
+  <LINK REV="made" HREF="mailto:seki@ylug.org">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="../seki.css">
+</head>
+
+<body BGCOLOR="WHITE">
+
+<h1>Linux on Mebius PC-PJ2 random report</h1>
+
+<h2>はじめに</h2>
+<p>このページは、<a href="http://www.keiyo.com/seki/">私</a>
+が Mebius PC-PJ2 に Linux をインストールしている時の、メモです。
+現在、インストール中で困っていることが書いてあったりもします。
+
+<h2>マシンについて</h2>
+<p><a href="http://www.sbc.co.jp/mebius/siyou/1/PC-PJ2.asp">Mebius PC-PJ2</a>
+は、ハードディスクが 6.4GB あるから Linux と Windows のデュアルブートにしても
+余裕があること、LAN が標準でついていること、
+持ち運びが苦にならない大きさであることなどの理由で買いました。
+ネットワークカードがあれば CD-ROM なんていらない！ということで、
+CD-ROM は買いませんでした。
+付属品としては、
+<a href="http://www.sharp.co.jp/sc/eihon/pcpj1/pcpd01.htm">デジタル携帯電話用アダプタ CE-PD01</a>
+を買いました。
+</p>
+
+<h2>Windows の起動</h2>
+<p>Windows 98 プリインストールマシンなので、まずは Windows を起動しました。
+もろもろのソフトウェアをインストールするために、まずはネットワークに接続しました。
+が、なんとネットワークが認識しません。
+実は、<font color="red">BIOS の初期設定でネットワークカードを認識しないようになっている</font>ので、
+その設定を変えないといけません。
+説明書にちゃんと書いてあるので、こんなところでつまづく人はそんなにいないでしょうが、
+注意してください。
+</p>
+
+<h2>パーティションの設定</h2>
+<p>続いて、パーティションを切りました。ここは、PowerQuest 社の
+<a href="http://www.netjapan.co.jp/ps/PowerQuest/pm/index.html">PartitionMagic 4.0</a>
+を使ったので、一発でした。
+実は、この製品はバージョン 3.0 も持っていたのですが、
+店頭で「Linux ext2 パーティションのリサイズに対応」という宣伝文句を見て、
+思わず4.0 も買ってしまいました。
+よく見ると、アップグレード版が安くなっている……。</P>
+
+<h2>基本システムのインストール</h2>
+<p>インストールするディストリビューションは、
+<a href="http://www.debian.or.jp">Debian GNU/Linux</a>
+に決まりました。ネットワーク経由でのインストールは、ftp あるいは http
+サイトから直接できるのでとても簡単です。
+また、いろいろな種類のソフトがパッケージ化されているのもありがたい。</p>
+<p>この文書で、Debian インストール手順をすべて記述するという無謀なことはしません。
+Debian をインストールしてみたいという方は、インストール本を一冊買っておくことをお勧めします。
+Web 上にも、<a href="http://www.debian.org/releases/slink/i386/install">Debian GNU/Linux 2.1 のインストール (Intel x86)</a>
+のような文書が用意されています。</p>
+<p>さて、CD-ROM がないので、基本システムのインストールはフロッピーから行う必要があります。やりかたは、
+<a href="http://www.debian.org/releases/slink/i386/ch-install-methods.ja.html#s-install-all-from-floppies">フロッピーからの基本システムのインストール</a>
+に書いてあるとおりです。Rescue Floppy, Drivers Floppy, 基本システムのディスクイメージから、合計９枚のフロッピーを作りました
+（その前に DEC へのインストールをするときに作ったものをそのまま使いました）。
+<p>ドライバーになにを組み込むか、特にネットワークカードあたりではまるかなとも思いましたが、
+<font color="red">RealTek RTL8139</font> を選択したら、問題なく動作しました。
+実は、この後に Red Hat 5.2 日本語版のインストールを試すことになるのですが、そのときにはインストール時になぜか RealTek のアダプターが表示されなかったため、インストールができませんでした。</p>
+
+<p>さて、このようにして、基本システムのインストールは、何事も問題なく終わりました。</p>
+
+<h2>Apt-get !!</h2>
+<p>さて、基本システムのインストールができて、さらにネットワークカードさえ認識してしまえば、こっちのものです。 
+再起動したら、dselect が起動しました。</p>
+<p>インストール元には、apt で
+<a href="http://www.debian.or.jp/Link.html">debian-jp のミラーサイト</a>
+から選択して、続いて stable を選択し、最後に 
+main contrib non-free main-jp contrib-jp non-free-jp local
+を選択しました。</p>
+<p>「とにかくなんでも入れてしまえ」ということで、Home セットだったかな？400数メガバイトのセットを選んで入れてしまいました。
+ついでに、kon2 とか、思いついたものをいくつか入れておきました。</p>
+<p>さて、selection が終わったら、あとは install で go! 
+勝手にインストールしてセットアップまでやってくれます。
+その間、私はなにもすることはなく、他の仕事をしていればいいのですから楽です。
+……そのはずだったのですが、なぜか途中で数回ネットワークの調子がおかしくなり、
+ftp からのダウンロードが止まります。
+再起動して再び dselect から install とすると、ちゃんと止まっていたところから再開してくれるので、
+dselect は賢い、と思いました。</p>
+<p>かくして、一通りの道具はそろいました。</p>
+
+<h2>KON が動かない</h2>
+<p>X をインストールする前に、とりあえず KON を動かしてみました。
+しかし、日本語を表示しようとすると、画面が砂嵐になります。</p>
+<p>KON さえ動けば、X が動かなくても「KON と仮想コンソールさえあれば、X なんていらないさ」とうそぶくこともできますが、
+日本人の私としては、KON が動かなければ X をインストールして日本語を使えるようにしないと使いものになりません。</p>
+<p>というわけで、X のインストールをする決心をしました。</p>
+
+<h2>カーネルの再構築</h2>
+<p>とりあえず、X のインストールの前にカーネルの再構築です。
+これをしておかないと、どうも気分良くないので。(^^;
+ここのポイントは、PS/2 マウスを組み込むこと、
+ネットワークカードに RealTek RTL8139 を選択すること、という程度です。</p>
+
+<p><a href="kernel-image-2.0.36_local.1.0_i386.deb">私が構築したカーネルイメージ</a>
+を置いておきます。
+同じマシンを使っている人ならば、そのまま使えるはずです。
+でも、せっかくなら自分で再構築した方がいいと思いますよ。</p>
+
+<h2>X のセットアップ</h2>
+<p>さて、ここから先が泥沼にはまることになります。</p>
+
+<h2>…その後</h2>
+<p>
+1999年5月に Mebius を購入し、それからインストールに挑戦して
+X のセットアップに挫折してそのまま放置していました。
+</p>
+
+<p>
+2000年4月24日、ふとしたことで Mebius に関する情報を収集していたら、
+<a href="http://www.nifty.ne.jp/forum/fsharp/webforum/index.htm">FSHARP はみだし会議室</a>
+という PC-UNIX on Mebius 関係の会議室があったので、検索したところ
+<a href="http://www.yone.ac.jp/~takao/">Takao</a>
+さんのホームページを発見。私が最初インストールにチャレンジした時点
+においては、まだ X が対応していなかったけど、
+1999年7月20日公開の
+<a href="http://www.xfree86.org/releaseplans.html">XFree86-3.3.4</a>
+にて、Cyber9525DVD がサポートされたことを今さらながらに知りました。
+また、チャレンジする予定です。
+</p>
+
+<h2>参考資料</h2>
+<ul>
+  <li><a href="dmesg">dmesg の結果</li>
+
+</ul>
+
+<hr>
+<dl class="list">
+<dt><a href="../message.html">ご意見、ご感想</a>
+<dt><a href="index.html">[戻る]</a>
+</dl>
+
+</body>
+</html>

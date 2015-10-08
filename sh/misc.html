@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+        "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+ <head>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-2022-JP">
+  <title>Shell script</title>
+  <META NAME="author" LANG="ja" CONTENT="Katsutoshi Seki">
+  <META NAME="copyright" CONTENT="Katsutoshi Seki">
+  <META NAME="DESCRIPTION" CONTENT="Shell Script">
+  <META NAME="keywords" CONTENT="Katsutoshi Seki">
+  <LINK REV="made" HREF="mailto:seki@ylug.org">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="../seki.css">
+</head>
+
+<body>
+
+<h1>雑多なスクリプト</h1>
+
+<p>
+雑多なシェルスクリプトをここに置いておきます。
+キー入力を少なくするために作ったもので、
+完全に自分仕様に作られています。
+著作権を主張するまでもないものたちばかりです。
+Tips と思ってください。
+</p>
+
+<!-- h2>メーラー立ち上げ</h2>
+
+<p>
+m という１文字スクリプト一発でメーラーを立ち上げています。
+X で立ち上げるときは X Window の mule が、ssh 等 tty で
+立ち上げるときは tty の mule が立ち上がるようにしています。
+</p>
+
+<blockquote>
+<pre>
+#!/bin/sh
+
+if [ $DISPLAY ]; then
+  mule -geometry 80x30 -e mew &
+else
+  mule -nw -e mew
+fi
+</pre>
+</blockquote -->
+
+<h2>Kterm の文字コード変換</h2>
+
+<p>
+kterm の文字コードを変えるときには、Shift-JIS にしたいときには
+sjis と打ち込むと、Shift JIS コードの kterm が立ち上がるように
+しています。
+</p>
+
+<blockquote>
+<pre>
+#!/bin/sh
+cd $HOME
+kterm -xim -km sjis -sb -bg ivory -T "Kanji Terminal [Shift JIS]" \
+  -geometry 80x25 &
+</pre>
+</blockquote>
+
+<p>
+EUCは、-km オプションを euc にするだけです。
+</p>
+
+<h2>TDS で日記をつける</h2>
+
+<p>
+何をしているかは、直接スクリプトを読んでください。
+使うときには、設定を書き変えてください。
+本当は Makefile 使っています。
+</p>
+
+<blockquote>
+<pre>
+#!/bin/sh
+cd /home/seki/omega
+rsync -avuz -e ssh omega.webmasters.gr.jp:diary .
+mkdir -p diary/`date +%Y`/`date +%m`
+emacs diary/`date +%Y`/`date +%m`/`date +%d`.tdf
+rsync -avuz -e ssh diary omega.webmasters.gr.jp:.
+</pre>
+</blockquote>
+
+<p>
+いろいろな端末で同じように日記をつけることができ、
+しかもそれぞれの端末に等しくバックアップができるので
+けっこう便利です。
+</p>
+
+<hr>
+
+<a href="index.html">シェルスクリプト</a>
+
+
+<DIV CLASS="copyright">
+Copyright (C) 1996-2001  <A HREF="http://seki.webmasters.gr.jp/">関　勝寿</A>.  All rights reserved.<BR>
+$Date: 2003-07-01 04:21:41 $ (UTC)
+</DIV>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+#!/bin/sh
+#
+# doho - Doho mailer
+#
+#   Latest version available at
+#     http://seki.webmasters.gr.jp/sh/doho.html
+#
+#  とってもいい加減なプログラムなので、ソースを読んで
+#  理解してください。今のところ、まともなドキュメントも
+#  ないですし。
+#  
+#  また、必ず自分宛てに試してからにしてみてください。
+#
+
+# ファイルの場所
+
+dir=/home/seki/doho
+ScriptFile=$dir/send.sh
+AddressFile=$dir/address
+
+# AddressFile には、
+#   email name
+#   email name
+# の書式で、メールを送信する対象をテキストファイルに書き出す。
+
+# メールアドレス
+
+From="Your Name <your@email.address.jp>"
+LogMail=your@email.address.jp
+
+# プログラムの場所
+
+sendmail=/usr/sbin/sendmail
+
+# 軽く設定をチェック
+
+if [ -d $dir ]; then
+  :
+else
+  echo "$dir が存在しません。"
+  echo "設定は直接 $0 を書き換えてください。"
+  exit 1
+fi
+
+# スクリプト生成開始
+
+echo '#!/bin/sh' > $ScriptFile
+
+cat $AddressFile | while read email name
+do
+
+cat <<EOM >> $ScriptFile
+
+cat <<EOF | nkf -j | $sendmail $email
+MIME-Version: 1.0
+From: $From
+To: $email
+Subject: Subject
+X-Mailer: My private shell script
+Content-Type: text/plain; charset=iso-2022-jp
+Content-Transfer-Encoding: 7bit
+$name 様
+
+あけましておめでとうございます。
+今年も、よろしくお願いします。
+
+云々
+
+---
+名前とかフッタとか
+EOF
+
+EOM
+
+done
+
+# ログを送信して、スクリプトは自動消滅
+cat <<EOF >> $ScriptFile
+cat $ScriptFile | nkf -j | mail -s 'Doho mailer send log' $LogMail
+rm $ScriptFile
+
+EOF
+
+# スクリプトを実行可能に
+
+chmod +x $ScriptFile
+
+# 完了メッセージ
+
+cat <<EOF
+メール送信スクリプト $ScriptFile が生成されました。
+スクリプトを編集して、プライベートメッセージを
+添えてから、$ScriptFile を実行することで、
+メールが送信されます。
+EOF

@@ -1,0 +1,263 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+ "http://www.w3.org/TR/PR-html40/loose.dtd">
+<HTML lang="en">
+<HEAD>
+  <META name="author" content="Katsutoshi Seki">
+  <META name="copyright" content="&copy; 1998 Katsutoshi Seki">
+  <META name="keywords" content="shogi,chess,variant,game,tsume,mating">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+  <LINK REV=MADE HREF="mailto:seki@ylug.org">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="../seki.css">
+  <TITLE>Tsume Shogi (Shogi Mating Problems)</TITLE>
+</HEAD>
+<BODY>
+
+<a href="http://purl.org/net/seki/en/"><img src="../icons/logo.png" alt="Toshi's Shogi and Chess Page" width=82 height=39 align=right border=0></a><br clear=all>
+
+<h1>Tsume Shogi (Shogi Mating Problems)</h1>
+
+<h2>Index</h2>
+<ul>
+<li><a href="#intro">Introduction</a>
+<li><a href="#rule">The rule of Tsume Shogi</a>
+<li><a href="#begin">Let's begin</a>
+<li>Tsume Shogi <a href="#1">#1</a> <a href="#2">#2</a> <a href="#3">#3</a>
+<li><a href="#link">Other Tsume Shogi Sites</a>
+</ul>
+<h2><a name="intro">Introduction</a></h2>
+<p>Tsume Shogi is a Shogi mating problem. In chess problem, you don't have
+to check opponent's king with every move, but in Tsume Shogi, you must.</p>
+<p>The drop rules make shogi very different from the other chess family games,
+especially during the endgame. In the other chess variant where the drop move
+is not possible, the number of pieces on the board decreases as the game
+proceeds, and it never increases.
+However, in shogi, total number of pieces in play,
+on the board and in the players' hand, is constant.</p>
+<h2><a name="rule">The rule of Tsume Shogi</a></h2>
+<p>Patric Davin also explains the <a href="http://www.vega.or.jp/~patrick/shogi/ladder/help.html">Tsume Shogi rules</a>, so please visit his page if you don't understand
+the following explanation.</p>
+
+<p>Briefly, the rules of Tsume Shogi are as follows:
+<ol>
+<li>Shogi pieces are set on shogi board so that the Attacker's territory is toward yourself and the Defender's territory is toward the opponent.
+In shogi, both players use the same pieces, but for convenience, usually the side which moves first is reffered to as "black" and the other side is reffered to as "white" (opposite to chess).
+Using these terms, black is the attacker and white is the defender. The purpose of the Tsume Shogi is to find a way for the attacker to checkmate the defender's king.
+<li>Usually only the defender's king is set on a board, and the attacker's king is not on the board. But sometime both kings are set on the board.
+This is called a "sogyoku" tsume shogi. "Sogyoku" means both of the kings.
+<li>Usually the hand of the defender is not included in the tsume shogi problem figure.The defender has all of the pieces (except king) that are not on the board or the attacker's hand.
+<li>The attacker always moves first. Every move of the attacker must check the defender.
+This is different from a chess problem, where the attacker's move need not to be a check.
+<li>The defender must protect his king from check.
+If this is impossible the defender is checkmated and the tsume shogi is solved.
+When there are two or more ways for the defender to escape the check, he should chose the way that postpones checkmate the longest.
+<li>The attacker's hand (the pieces that he captured) should be empty at the end of the tsume shogi, i. e., when the attacker checkmates.
+Therefore when the defender has two or more ways to protect, the defender should chose the way that the attacker's hand is empty at the end.
+If the offence's hand is not empty, the tsume shogi problem is called "imperfect".
+<li>The idea of futile interposition will be explained later. Look at
+<a href="http://www.vega.or.jp/~patrick/shogi/ladder/help.html">Patric's Q&A</a>
+right now.
+</ol>
+<p>There are some other rules or convention in tsume shogi, like "yodumi" or "hencho," but at this time these are not "official" rule.
+Although undocumented (as an official rule), they are sometimes the subject of discussions.
+I mean there are no such things as official rule
+in Tsume Shogi at all right now, although some people have
+attemped to make it.
+I hope that the above rule descriptions are enough for you to solve tsume shogi problems,
+but if you find them unclear or have problem solving a certain tsume
+shogi problem, please ask me for details.
+I will write more detail explanations using several examples on this page later.
+</p>
+<h2><a name="begin">Let's begin</a></h2>
+<p>If this is your first time trying to solve Tsume Shogi,
+I recommend that you try the 17 basic mating problems displayed in the <a href="http://www.ricoh.co.jp/SHOGI/emate/mate.html">Tsume problems page of Richo</a>. There are also other tsume shogi problems in this site.</p>
+<p>I am planning to display my mating problems on this page.
+The answers may or may not be displayed.
+If you can solve my problems and want your name and your country to be listed here, please <a href="mailto:seki@ylug.org">email me</a>.
+Comments are also displayed, as long as they do not give away the answer.
+If you have your own website, please tell me the URL, so that I can include a link to your page.
+If you can't REALLY solve the problem, mail me and I will tell you the answer.</p>
+<p>I have already displayed 23 problems that I made in <a href="../">my Japanese website</a>. I will display them little by little on this site, and I would like to make new ones some day.</p>
+<p>If you want to display your own problems in this page, I am glad to do so. Please send me your problems. Don't send me too difficult problems right now. I am planning to display more difficult problems, so send me difficult ones later.</p>
+<p>O.K., now let's start.
+<h2><a name="1">Tsume Shogi #1  (Katsutoshi Seki)</a></h2>
+<p>This is a really easy problem. Please give it a try.
+<p><b>NOTE: You have to know the rule of futile
+interposition to solve this problem, and I forgot to described it.
+I will explain it later (I wrote "in a few days", but it may take some more...).
+Until then, please look at
+<a href="http://www.shogi.net/nexus/ladder/help.html">Patric's Q&A</a>,
+for this rule.</b></p>
+
+<pre><tt>
+  9  8  7  6  5  4  3  2  1
++---------------------------+
+| *  *  *  *  *  *  * wN wK |a
+| *  *  *  *  *  *  *  * wL |b
+| *  *  *  *  *  * bR  *  * |c
+| *  *  *  *  * bB  *  *  * |d
+| *  *  *  *  *  *  *  *  * |e
+| *  *  *  *  *  *  *  *  * |f
+| *  *  *  *  *  *  *  *  * |g
+| *  *  *  *  *  *  *  *  * |h
+| *  *  *  *  *  *  *  *  * |i
++---------------------------+
+Black in hand: nothing
+</tt></pre>
+
+<h3>Correct solution from:</h3>
+<ul>
+<li><a href="http://www.cd.chalmers.se/~ralf/index.html">Ralf Lundberg</a> (Sweden): You have to know the tsume rules to understand this is a 1-mover:-)
+<li>Harold Shore (USA)
+<li>Ross Dickson (Canada)
+<li>Konstantin Nikonov (Russia)
+<li>James Graves (Canada)
+
+</ul>
+<h2><a name="2">Tsume Shogi #2  (Anonymous)</a></h2>
+<p>This is a famous problem.</p>
+<pre><tt>
+  9  8  7  6  5  4  3  2  1
++---------------------------+
+| *  *  * wS wK wS  *  *  * |a
+| *  *  *  *  *  *  *  *  * |b
+| *  *  *  * bP+ *  *  *  * |c
+| *  *  *  *  *  * bB+ *  * |d
+| *  *  *  *  *  *  *  *  * |e
+| *  *  *  *  *  *  *  *  * |f
+| *  *  *  *  *  *  *  *  * |g
+| *  *  *  *  *  *  *  *  * |h
+| *  *  *  *  *  *  *  *  * |i
++---------------------------+
+Black in hand: S 
+</tt></pre>
+
+<h3>Correct solution from:</h3>
+<ul>
+<li><a href="http://www.cd.chalmers.se/~ralf/index.html">Ralf Lundberg</a> (Sweden): Splendid little problem! This was the last I solved.
+<li>Harold Shore (USA)
+<li>Ross Dickson (Canada)
+<li>Konstantin Nikonov (Russia)
+
+</ul>
+<h2><a name="3">Tsume Shogi #3  (Katsutoshi Seki)</a></h2>
+<p>Hint: Don't let the King take your rook and escape to 3d position!
+If you allow it, the King will escape to the very large field, and it is impossible to mate. How can you prevent the escape?</p>
+<pre><tt>
+  9  8  7  6  5  4  3  2  1
++---------------------------+
+| *  *  *  *  *  * wB+wL wL |a
+| *  *  *  *  *  *  *  *  * |b
+| *  *  *  *  *  *  * wK  * |c
+| *  *  *  *  *  * bR  * bP |d
+| *  *  *  *  *  *  * bN  * |e
+| *  *  *  *  *  *  *  *  * |f
+| *  *  *  *  *  *  *  *  * |g
+| *  *  *  *  *  *  *  *  * |h
+| *  *  *  *  *  *  *  *  * |i
++---------------------------+
+Black in hand: B 
+</tt></pre>
+
+<h3>Correct solution from:</h3>
+<ul>
+<li><a href="http://www.cd.chalmers.se/~ralf/index.html">Ralf Lundberg</a> (Sweden)
+<li>Ross Dickson (Canada)
+<li>Konstantin Nikonov (Russia)
+<li>In my Japanese page (I believe they are all Japanese) : Mogura, Green Tea, Seiya Haze, Masahiro Machida, Ryohji Okutani, Shimozawa, Dai-hinmin, Atsushi Ohta, Masashi Ohta, Nokonoko, Ishimatsu, and others...
+</ul>
+
+<h2><a name="4">Tsume Shogi #4  (Katsutoshi Seki)</a></h2>
+<p>
+Hint: Sacryfice, sacryfice, and mate.
+</p>
+<pre><tt>
+White in hand: R2 G4 S N3 L4 P17 
+  9  8  7  6  5  4  3  2  1
++---------------------------+
+| *  *  *  *  * wB+wK  *  * |a
+| *  *  *  *  *  *  *  * bB+|b
+| *  *  *  *  * bP+wS  *  * |c
+| *  *  *  *  *  *  *  *  * |d
+| *  *  *  *  *  *  *  *  * |e
+| *  *  *  *  *  *  *  *  * |f
+| *  *  *  *  *  *  *  *  * |g
+| *  *  *  *  *  *  *  *  * |h
+| *  *  *  *  *  *  *  *  * |i
++---------------------------+
+Black in hand: S2 N 
+</tt></pre>
+
+<h3>Correct solution from:</h3>
+<ul>
+  <li>Many Japanese in my Japanese site
+
+</ul>
+
+<h2><a name="5">Tsume Shogi #5  (Katsutoshi Seki)</a></h2>
+<p>
+Hint: "Keep gold general for mating material" is a famous saying.
+</p>
+<pre><tt>
+White in hand: B G3 S2 N3 L4 P16 
+  9  8  7  6  5  4  3  2  1
++---------------------------+
+| *  *  *  * bB  * wK wN  * |a
+| *  *  * wS bS  *  *  * wR |b
+| *  *  *  *  *  * wP bP  * |c
+| *  *  *  *  *  *  *  *  * |d
+| *  *  *  *  *  *  *  *  * |e
+| *  *  *  *  *  *  *  *  * |f
+| *  *  *  *  *  *  *  *  * |g
+| *  *  *  *  *  *  *  *  * |h
+| *  *  *  *  *  *  *  *  * |i
++---------------------------+
+Black in hand: R G 
+</tt></pre>
+
+<h3>Correct solution from:</h3>
+<ul>
+  <li>Many Japanese in my Japanese site
+
+</ul>
+
+<!-- --------------------------- template ---------------------- 
+<h2><a name="1">Tsume Shogi #1  (Katsutoshi Seki)</a></h2>
+<p>
+Hint: 
+</p>
+<pre><tt>
+
+
+</tt></pre>
+
+<h3>Correct solution from:</h3>
+<ul>
+  <li>Many Japanese in my Japanese site
+
+</ul>
+
+-------------------------------------------------------------- -->
+
+<h2><a name="link">Other Tsume Shogi Sites</a></h2>
+<ul>
+<li><a href="http://www.ricoh.co.jp/SHOGI/emate/mate.html">Tsume problems page of Richo</a>
+<li><a href="http://www.shogi.net/nexus/">Shogi Nexus by Patric Davin</a> Tsume shogi pages are at the bottom
+<li><a href="http://www.jwindow.net/LWT/SHOGI/TSUME/shogi_tsume_musou.html">Musou and Zukou</a> The most famous historical two Tsume Shogi books (difficult!)
+<li><a href="http://www.enjoy.ne.jp/~hiraiyas/T+home.html">Tsume Shogi Theater</a> by Rokuro Akashi and Yasuo Hirai
+
+</ul>
+
+<hr>
+<center>
+<a href="index.html"><img align=middle src="../icons/logo.png" width=85 height=39 border=0> 
+<font size=+2>Back to Top Page</font>
+</a>
+</center>
+<HR>
+<p>Questions or comments to</p>
+
+<div align="center"><ADDRESS><A HREF="mailto:seki@ylug.org"><IMG SRC="../mail.png" HEIGHT=32 WIDTH=32 ALIGN=CENTER></A><A HREF="mailto:seki@ylug.org">seki@ylug.org</A></ADDRESS></CENTER>
+
+
+</BODY>
+</HTML>

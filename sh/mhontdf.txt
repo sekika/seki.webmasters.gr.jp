@@ -1,0 +1,138 @@
+#!/bin/sh
+#
+# mhontdf - Mail archive to tdf file converter
+#
+#   Latest version available at
+#     http://home.att.ne.jp/wood/seki/sh/mhontdf.html
+#
+#     $Id: mhontdf.txt,v 1.2 2003/07/01 04:21:41 seki Exp $
+#
+
+indir=$1
+diarydir=$2
+member=$3
+
+# setting parameters
+
+work=/tmp/$USER-mhontdf-`date +%Y%m%d-%H%M%S`
+header=$work-header
+message=$work-message
+mail=$work-mail
+author=$work-author
+tdf=$work-tdf
+usage="Usage:  "$0" InpurDir OutputDir [ MemberFile ]"
+
+# checking parameters
+
+if [ -z $indir ]; then
+  echo $usage
+  exit
+fi
+
+if [ -z $diarydir ]; then
+  echo $usage
+  exit
+fi
+
+if [ -d $indir ]; then
+  :
+else
+  echo "Input directory $indir does not exist"
+  echo $usage
+  exit 1
+fi
+
+if [ -d $diarydir ]; then
+  :
+else
+  echo "Output directory $diarydir does not exist"
+  echo $usage
+  exit 1
+fi
+
+# start
+
+echo "$indir directory: "`ls $indir | wc -l`" files in total."
+
+for infile in `ls $indir`
+do
+echo -n "."
+
+rm -f $header
+rm -f $message
+
+log=$header
+
+cat $indir/$infile | nkf -e > $mail
+
+cat $mail | while read line
+do
+  echo "$line" >> $log
+  if [ -z "$line" ] ; then
+    log=$message
+  fi
+done
+
+subject=`grep Subject $header | sed -e 's/Subject:\ //' | nkf -m`
+day=`grep Date $header | sed -e 's/Date:\ //'`
+address=`grep From $header | head -n 1 | awk '{printf $2}'`
+
+year=$diarydir/`echo $day | awk '{print $4}'`
+
+case `echo $day | awk '{print $3}'` in
+  Jan) month=$year/01 ;;
+  Feb) month=$year/02 ;;
+  Mar) month=$year/03 ;;
+  Apr) month=$year/04 ;;
+  May) month=$year/05 ;;
+  Jun) month=$year/06 ;;
+  Jul) month=$year/07 ;;
+  Aug) month=$year/08 ;;
+  Sep) month=$year/09 ;;
+  Oct) month=$year/10 ;;
+  Nov) month=$year/11 ;;
+  Dec) month=$year/12 ;;
+  *) ;;
+esac
+
+day2=`echo $day | awk '{print $2}'`
+
+if [ $day2 -lt 10 ]; then
+  day2="0"`echo $day2| sed -e 's/^0//'`
+fi
+
+date=$month/"$day2".tdf
+
+echo $address > $author
+
+if [ -z $member ]; then
+  :
+else
+  if [ -e $member ]; then
+    cat $member | while read email name
+    do
+      if [ "$address" = "$email" ] ; then
+        echo $name > $author
+      fi
+    done
+  fi
+fi
+
+echo "NEW $subject" > $tdf
+echo -n "CAT " >> $tdf
+cat $author >> $tdf
+echo >> $tdf
+echo "PRE" >> $tdf
+cat $message >> $tdf
+echo "/PRE" >> $tdf
+echo >> $tdf
+
+mkdir -p $month
+echo >> $date
+cat $tdf >> $date
+
+done
+
+cat $diarydir/*/*/*.tdf | grep CAT | sort | uniq | sed -e 's/^CAT\ //' >> $member
+
+rm $work-*

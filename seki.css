@@ -1,0 +1,190 @@
+body {
+  background-image: url(./back/58.png);
+  color: black;
+  font-size: 15px;
+  border-left: solid 3px #40C0C0;
+  border-right: solid 3px #80C0C0;
+  padding-left: 15px;
+  padding-right: 13px;
+}
+
+h1 {
+  color            : #000080;
+  font-size        : 30px; 
+  font-style       : italic;
+  text-align       : center; 
+  font-weight      : bolder;  
+}
+
+h2 {
+  font-size        : 24px; 
+  text-align       : left; 
+  font-weight      : bold;
+  color            : #408080; 
+  background-color : #ececec; 
+  margin-right     : 0; 
+  padding          : 7px 7px 7px 10px;
+  border-color     : #000080;
+  border-width     : 2px 0px 2px 0px;
+  border-style     : solid;
+}
+
+h3 {
+  font-size        : 20px;
+  text-align       : left;
+  color            : #009000;
+  font-weight      : bold; 
+  background-color : #ececec; 
+  margin-right     : 0; 
+  padding          : 0.25em 0em 0.25em 0.7em;
+  border-color     : #009000;
+  border-style     : solid;
+  border-width     : 1px 0em 0em 10px;}
+
+h4 {
+  font-size        : 17px;
+  font-weight      : bold;
+  text-align       : left;
+  color            : #800080;
+  background-color : #ececec; 
+  margin-right     : 0em; 
+  padding          : 0.25em 0em 0.25em 0.7em; 
+  border-color     : #800080;
+  border-style     : solid;
+  border-width     : 1px 0em 0em 5px; 
+}
+
+blockquote {
+  font-size        : 15px;
+  color            : black;
+  color: #330000;
+  background-color: rgb(95%, 100%, 95%);
+  padding:6pt;
+  border-style:outset;
+  border-color: rgb(50%, 80%, 50%);
+  border-width:4pt
+}
+
+
+a.name  {
+  text-decoration  : none;
+}
+
+A:Hover	{
+  background-color : #ffff80;
+}
+
+p {
+  font-size        : 15px;
+  color            : black;
+  text-indent: 1em;
+}
+
+p.note {
+  text-indent: 0em;
+  color            : brown;
+  font-size: smaller;
+}
+
+dl.menu {
+  font-size        : 32px;
+  color            : blue;
+  text-align: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  background-color: rgb(90%, 90%, 95%);
+  padding:10pt;
+  border-style:outset;
+  border-color: rgb(50%, 80%, 50%);
+  border-width:4pt
+}
+
+dl.list {
+  font-size        : 15px;
+  color            : black;
+  margin-left: 3%;
+}
+
+dl.history {
+  font-size        : 15px;
+  color            : black;
+  text-indent: -8em;
+  margin-left: 10em;
+}
+
+dl.mirror {
+  color            : #000080;
+  text-align       : center; 
+  font-weight      : bolder;  
+  font-size        : 15px;
+}
+
+pre {
+  padding: 1em;
+  border: 1px solid #000;
+  width: auto;
+  _width: 90%;
+  overflow: auto;
+  _overflow: scroll;
+  color: #000;
+  background-color: #f6f6f6;
+}
+
+strong {
+	color: red;
+	font-weight: bold;
+}
+
+dl dd {
+	font-size        : 15px;
+	color            : black;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+ul{
+    list-style-image: url("icons/green-marble.png")
+}
+
+em {
+	font-size        : 15px;
+	color: #330000;
+}
+
+div.lang-navigator {
+  text-align: left;
+  font-size: smaller;
+}
+
+div.handy-navigator {
+  text-align: right;
+  font-size: smaller;
+}
+
+div.copyright {
+  text-align: right;
+  font-family: helvetica, sans-serif;
+  font-size: smaller;
+  color: rgb(40%,40%,40%)
+}
+
+div.footer {
+  text-align: right; 
+  font-family: helvetica, sans-serif;
+  font-size: smaller;
+  color: rgb(40%,40%,40%)
+}
+
+div.title {
+  color: green;
+  font-size: 120%;
+}
+
+% http://coliss.com/articles/build-websites/operation/css/444.html
+
+a[href^="http://"]{
+  background:transparent url(/icons/external.gif) center rightright no-repeat;
+  display:inline-block;
+  padding-right:15px;
+}
+

@@ -1,0 +1,75 @@
+#!/bin/sh
+#
+# TDS 用 スケジュール通知 sh スクリプト
+#
+#         reminder.sh (仮称)
+#
+#         written by seki@ylug.org on Oct. 24, 2001
+# 
+# schedule.dat に今日の予定が書かれているとメールで
+# 通知する。その際に、todo.dat の内容も同時に送る。
+# 今日の予定が書かれていなければ、なにもしない。
+#
+# crontab で毎朝実行するという使い方を想定しています。
+#
+# 著作権を主張するほどのプログラムではないと思います。
+#
+# TDS はこちら http://tds.dive-in.to/
+#
+
+########## 諸々の設定 ###############
+
+# sendmail の場所 (whereis sendmail)
+sendmail=/usr/sbin/sendmail
+
+# 通知先メールアドレス
+notify=your@email.address.jp
+
+# From に表示するメールアドレス
+from=schedule@jp
+
+# メールの Subject
+#  (日本語を使うときは mime encode してください)
+subject="[ Reminder message ]"
+
+# schedule.dat, todo.dat が置かれているディレクトリ
+datdir=$HOME/diary/dat
+
+########## ユーザー設定ここまで ##########
+
+# ファイルの場所
+schedule=$datdir/schedule.dat
+todo=$datdir/todo.dat
+message=$datdir/message
+tmp=$datdir/tmp
+
+nkf -e $schedule | grep `date +%Y/%m/%d` > $tmp
+
+if [ -s $tmp ]; then
+
+nkf -j <<EOF > $message
+MIME-Version: 1.0
+From: $from 
+To: $notify
+Subject: $subject
+X-Mailer: $0
+Content-Type: text/plain; charset=iso-2022-jp
+Content-Transfer-Encoding: 7bit
+
+EOF
+
+nkf -j $tmp >> $message
+
+nkf -j <<EOF >> $message
+
+*** TODO リスト ***
+
+EOF
+
+nkf -j $todo >> $message
+
+cat $message | $sendmail $notify
+
+fi
+rm -f $tmp
+rm -f $message

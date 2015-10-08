@@ -1,0 +1,19 @@
+Zillions Save Game File Version 0.02 H
+RulesFile=Rules\Swappers,_Chess.zrf
+VariantName=4 Knight Swap
+1. WhiteKnight c1 - a2
+2. BlackKnight c3 - b1
+3. BlackKnight a3 - c2
+4. WhiteKnight a1 - b3
+5. WhiteKnight b3 - c1
+6. BlackKnight c2 - a1
+7. WhiteKnight a2 - c3
+8. BlackKnight b1 - a3
+9. WhiteKnight c3 - b1
+10. WhiteKnight c1 - a2
+11. BlackKnight a1 - b3
+12. BlackKnight a3 - c2
+13. WhiteKnight b1 - a3
+14. WhiteKnight a2 - c3
+15. BlackKnight c2 - a1
+16. BlackKnight b3 - c1

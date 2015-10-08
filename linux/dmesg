@@ -1,0 +1,170 @@
+eption 16 error reporting.
+Checking 'hlt' instruction... Ok.
+Linux version 2.0.36 (root@soil09) (gcc version 2.7.2.3) #1 Thu Jun 3 03:33:27 JST 1999
+Starting kswapd v 1.4.2.2 
+Serial driver version 4.13 with no serial options enabled
+tty00 at 0x03f8 (irq = 4) is a 16550A
+tty01 at 0x02f8 (irq = 3) is a 16550A
+PS/2 auxiliary pointing device detected -- driver installed.
+APM BIOS version 1.2 Flags 0x03 (Driver version 1.2)
+    Entry f000:599f cseg16 f000 dseg 40 cseg len ffff, dseg len ffff
+    Connection version 1.1
+    AC on line, battery status high, battery life 100%
+    battery flag 0x01, battery life unknown
+loop: registered device at major 7
+ide: i82371 PIIX (Triton) on PCI bus 0 function 57
+    ide0: BM-DMA at 0xfc90-0xfc97
+    ide1: BM-DMA at 0xfc98-0xfc9f
+hda: TOSHIBA MK6412MAT, 6194MB w/0kB Cache, CHS=789/255/63, UDMA
+ide0 at 0x1f0-0x1f7,0x3f6 on irq 14
+Floppy drive(s): fd0 is 1.44M
+FDC 0 is a National Semiconductor PC87306
+  The PCI BIOS has not enabled this device!  Updating PCI config 0003->0007.
+rtl8139.c:v0.99B 4/7/98 Donald Becker http://cesdis.gsfc.nasa.gov/linux/drivers/rtl8139.html
+eth0: RealTek RTL8139 at 0xf800, IRQ 9, 08:00:1f:04:c6:d7.
+Partition check:
+ hda: hda1 hda2 hda3 hda4
+VFS: Mounted root (ext2 filesystem) readonly.
+Adding Swap: 96384k swap-space (priority -1)
+Unable to handle kernel paging request at virtual address c40155e7
+current->tss.cr3 = 037fa000, %cr3 = 037fa000
+*pde = 00001067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<040155e7>]
+EFLAGS: 00010246
+eax: 00000000   ebx: 00000100   ecx: 0401556c   edx: 00000000
+esi: 037f5f24   edi: 0000002b   ebp: 03636998   esp: 039aaff8
+ds: 0018   es: 0018   fs: 002b   gs: 002b   ss: 0018
+Process insmod (pid: 37, process nr: 14, stackpage=039aa000)
+Stack: 0401556c 039ac018 
+Call Trace: [<0401556c>] 
+Code: <1>Unable to handle kernel paging request at virtual address c40155e7
+current->tss.cr3 = 037fa000, %cr3 = 037fa000
+*pde = 00001067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<0010adf8>]
+EFLAGS: 00010202
+eax: 00000010   ebx: 039ac018   ecx: 040155e7   edx: 0000ea60
+esi: 00000000   edi: 039ab000   ebp: 039aafbc   esp: 039aaf60
+ds: 0018   es: 0018   fs: 0010   gs: 002b   ss: 0018
+Process insmod (pid: 37, process nr: 14, stackpage=039aa000)
+Stack: 001a002b 00000000 00015000 039aafbc 0358c018 047f0000 04800000 04000000 
+       03580018 00111a76 001a87e7 039aafbc 00000000 001117a8 037f5f24 0000002b 
+       03636998 00004502 03df9018 00000601 0010aa60 039aafbc 00000000 00000100 
+Call Trace: [<001a002b>] [<047f0000>] [<04800000>] [<04000000>] [<00111a76>] [<001117a8>] [<0010aa60>] 
+       [<0401556c>] [<04010018>] [<040155e7>] [<0401556c>] 
+Code: 64 8a 04 0e 0f a1 88 c2 81 e2 ff 00 00 00 89 54 24 10 52 68 
+Unable to handle kernel paging request at virtual address c40155fe
+current->tss.cr3 = 037fa000, %cr3 = 037fa000
+*pde = 00001067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<040155fe>]
+EFLAGS: 00010246
+eax: 00000000   ebx: 00000100   ecx: 0401556c   edx: 00000000
+esi: 037f5f24   edi: 0000002b   ebp: 03636998   esp: 039b4ff8
+ds: 0018   es: 0018   fs: 002b   gs: 002b   ss: 0018
+Process insmod (pid: 38, process nr: 16, stackpage=039b4000)
+Stack: 0401556c 039ac018 
+Call Trace: [<0401556c>] 
+Code: <1>Unable to handle kernel paging request at virtual address c40155fe
+current->tss.cr3 = 037fa000, %cr3 = 037fa000
+*pde = 00001067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<0010adf8>]
+EFLAGS: 00010202
+eax: 00000010   ebx: 039ac018   ecx: 040155fe   edx: 0000ea60
+esi: 00000000   edi: 039b5000   ebp: 039b4fbc   esp: 039b4f60
+ds: 0018   es: 0018   fs: 0010   gs: 002b   ss: 0018
+Process insmod (pid: 38, process nr: 16, stackpage=039b4000)
+Stack: 001a002b 00000000 00015000 039b4fbc 039b1018 047f0000 04800000 04000000 
+       039b0018 00111a76 001a87e7 039b4fbc 00000000 001117a8 037f5f24 0000002b 
+       03636998 00003a01 03df9018 00004102 0010aa60 039b4fbc 00000000 00000100 
+Call Trace: [<001a002b>] [<047f0000>] [<04800000>] [<04000000>] [<00111a76>] [<001117a8>] [<0010aa60>] 
+       [<0401556c>] [<04010018>] [<040155fe>] [<0401556c>] 
+Code: 64 8a 04 0e 0f a1 88 c2 81 e2 ff 00 00 00 89 54 24 10 52 68 
+Unable to handle kernel paging request at virtual address c4015615
+current->tss.cr3 = 037fa000, %cr3 = 037fa000
+*pde = 00001067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<04015615>]
+EFLAGS: 00010246
+eax: 00000000   ebx: 00000100   ecx: 0401556c   edx: 00000000
+esi: 037f5f24   edi: 0000002b   ebp: 03636998   esp: 039beff8
+ds: 0018   es: 0018   fs: 002b   gs: 002b   ss: 0018
+Process insmod (pid: 39, process nr: 17, stackpage=039be000)
+Stack: 0401556c 039ac018 
+Call Trace: [<0401556c>] 
+Code: <1>Unable to handle kernel paging request at virtual address c4015615
+current->tss.cr3 = 037fa000, %cr3 = 037fa000
+*pde = 00001067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<0010adf8>]
+EFLAGS: 00010202
+eax: 00000010   ebx: 039ac018   ecx: 04015615   edx: 0000ea60
+esi: 00000000   edi: 039bf000   ebp: 039befbc   esp: 039bef60
+ds: 0018   es: 0018   fs: 0010   gs: 002b   ss: 0018
+Process insmod (pid: 39, process nr: 17, stackpage=039be000)
+Stack: 001a002b 00000000 00015000 039befbc 039b1810 047f0000 04800000 04000000 
+       039b0018 00111a76 001a87e7 039befbc 00000000 001117a8 037f5f24 0000002b 
+       03636998 00000201 03df9018 00000201 0010aa60 039befbc 00000000 00000100 
+Call Trace: [<001a002b>] [<047f0000>] [<04800000>] [<04000000>] [<00111a76>] [<001117a8>] [<0010aa60>] 
+       [<0401556c>] [<04010018>] [<04015615>] [<0401556c>] 
+Code: 64 8a 04 0e 0f a1 88 c2 81 e2 ff 00 00 00 89 54 24 10 52 68 
+Unable to handle kernel paging request at virtual address c401562c
+current->tss.cr3 = 037fa000, %cr3 = 037fa000
+*pde = 00001067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<0401562c>]
+EFLAGS: 00010246
+eax: 00000000   ebx: 00000100   ecx: 0401556c   edx: 00000000
+esi: 037f5f24   edi: 0000002b   ebp: 03636998   esp: 039cbff8
+ds: 0018   es: 0018   fs: 002b   gs: 002b   ss: 0018
+Process insmod (pid: 40, process nr: 18, stackpage=039cb000)
+Stack: 0401556c 039ac018 
+Call Trace: [<0401556c>] 
+Code: <1>Unable to handle kernel paging request at virtual address c401562c
+current->tss.cr3 = 037fa000, %cr3 = 037fa000
+*pde = 00001067
+*pte = 00000000
+Oops: 0000
+CPU:    0
+EIP:    0010:[<0010adf8>]
+EFLAGS: 00010202
+eax: 00000010   ebx: 039ac018   ecx: 0401562c   edx: 0000ea60
+esi: 00000000   edi: 039cc000   ebp: 039cbfbc   esp: 039cbf60
+ds: 0018   es: 0018   fs: 0010   gs: 002b   ss: 0018
+Process insmod (pid: 40, process nr: 18, stackpage=039cb000)
+Stack: 001a002b 00000000 00015000 039cbfbc 039c7018 047f0000 04800000 04000000 
+       039c0018 00111a76 001a87e7 039cbfbc 00000000 001117a8 037f5f24 0000002b 
+       03636998 ff25c486 03df9018 382474ff 0010aa60 039cbfbc 00000000 00000100 
+Call Trace: [<001a002b>] [<047f0000>] [<04800000>] [<04000000>] [<00111a76>] [<001117a8>] [<0010aa60>] 
+       [<0401556c>] [<04010018>] [<0401562c>] [<0401556c>] 
+Code: 64 8a 04 0e 0f a1 88 c2 81 e2 ff 00 00 00 89 54 24 10 52 68 
+PS/2 auxiliary pointing device detected -- driver installed.
+Serial driver version 4.13 with no serial options enabled
+tty00 at 0x03f8 (irq = 4) is a 16550A
+tty01 at 0x02f8 (irq = 3) is a 16550A
+Linux PCMCIA Card Services 3.0.5
+  kernel build: 2.0.36 unknown
+  options:  [pci] [cardbus]
+Intel PCIC probe: 
+  Ricoh RL5C475 CardBus at mem 0x68000000, 1 socket
+    host opts [0]: [no pci irq] [lat 168/176] [bus 32/34]
+    ISA irqs (default) = 3,4,5,7,9,10,11,12,15 status change on irq 15
+cs: IO port probe 0x1000-0x17ff: excluding nothing: probe failed.
+cs: IO port probe 0x0100-0x04ff: excluding 0x170-0x177 0x370-0x37f 0x398-0x39f 0x4d0-0x4d7
+cs: IO port probe 0x0a00-0x0aff: clean.

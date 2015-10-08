@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/PR-html40/loose.dtd">
+<html lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;CHARSET=Shift_JIS">
+  <title>チェス対局システム</title>
+  <link rel="stylesheet" type="text/css" media="all" href="http://seki.jpn.org/themes/young_leaves/styleMAC.css" />
+  <link rel="stylesheet" type="text/css" href="../seki.css">
+</head>
+<body>
+
+<a href="http://purl.org/net/seki/"><img src="../icons/logo.png" alt="ホームページ" border=0 width=82 height=39 align=right></a><br clear=all>
+
+<p><a href="../en/chess.html">English</a></p>
+
+<h1>チェス対局システム</h1>
+
+<p>オンラインでじっくりとチェスの対局ができる通信チェスシステムです。制限時間が決まっていませんので、対局者どうしの話し合いにより、じっくりとした対局が可能です。たとえば、１日１手ずつ指し手を進める、といった対局方法が可能です。いわゆる郵便チェスのネット版のようなイメージです。</p>
+
+<h2>対局の様子</h2>
+
+<p>対局の様子は<a href="http://seki.jpn.org/modules/chess/game.php?game_id=2">進行中のゲーム</a>からご覧いただくことができます。下の画像は、実際にムーブを進めている様子です。画像をクリックすると拡大します。ここでは、c2のポーンをc4に動かしていますので、マウスでc2, c4を順番にクリックして、決定ボタンを押すことで指し手を進めることができます。PGN形式のファイルが出力されますので、チェスソフトに棋譜を読み込ませることも簡単にできます。</p>
+
+<a href="sample.jpg"><img src="sample-small.jpg" alt="チェス対局システムの様子" width="350" height="282"></a>
+
+<h2>対局準備</h2>
+
+<ol>
+<li><a href="http://seki.jpn.org/modules/chess/help.php">対局方法のヘルプ</a>をご確認ください。
+<li><a href="http://seki.jpn.org">気まぐれサーバー</a>にユーザー登録をします。<a href="http://seki.jpn.org/register.php">新規ユーザー登録</a>から、希望するユーザー名、メールアドレス、パスワードを入力して、送信してください。登録したメールアドレス宛に承認キーが書かれたメールが届きますので、そのメールに記されたアドレスにアクセスすることで、登録が完了します。
+<li>これで、対局が可能になります。
+</ol>
+
+<h2>対局の開始</h2>
+
+<p>対局相手をみつけて対局を開始するためには、いくつかの方法があります。</p>
+
+<ol>
+<li>対局相手が決まっている場合には、２人ともユーザー登録をしてから、相手を指定して挑戦 (Individual challenge) によって、対局をはじめてください。
+<li>対局相手が決まっていない場合には、相手を指定せず挑戦 (Open challenge) によって新しいゲームを作成して、誰かが挑戦してくるのを待つことができます。
+<li>あるいは、<a href="http://seki.jpn.org/modules/chess/index.php">ゲーム一覧</a>の「挑戦一覧」を見て、挑戦をしている人がいれば、その人と対戦を開始することができます。
+<li><a href="http://www.shogi-chess.net/">将棋チェスネット</a>で対局相手を探すこともできます。ここでは、会員専用の掲示板の中に、チェス対局相手募集の掲示板があります。
+</ol>
+
+<h2>メール通知について</h2>
+
+<p>相手がムーブを進めたときにメールで通知を受け取ることができます。この機能を利用することにより、ムーブが進んだときにだけチェックすればよくなるので、効率的に対局を進めることができます。</p>
+
+<p>ログインしてゲームを表示すると、ゲームの一番下に「選択可能なイベント」としてこのような表示があらわれます。</p>
+
+<input type="hidden" name="not_redirect" value="/modules/chess/game.php" />
+<table class="outer">
+  <tr><th colspan="3">イベントの選択</th></tr>
+  <tr>
+    <td class="head">カテゴリ</td>
+    <td class="head"><input name="allbox" id="allbox" type="checkbox" value="全てチェック" /></td>
+    <td class="head">イベント</td>
+  </tr>
+
+      <tr>
+        <td class="even" rowspan="3">ゲーム</td>
+        <td class="odd">
+    
+    <input type="checkbox" id="not_list[]" name="not_list[1][status]" value="1" checked="checked" />
+    </td>
+    <td class="odd">このゲームでムーブが進んだ時に通知を受け取る <!-- Notify me when a new move is made in this game. --></td>
+  </tr>
+
+    <tr>
+        <td class="odd">
+    
+    <input type="checkbox" id="not_list[]" name="not_list[2][status]" value="0" />
+    </td>
+    <td class="odd">このページにコメントが追加された際に通知する</td>
+  </tr>
+    <tr>
+
+        <td class="odd">
+    
+    <input type="checkbox" id="not_list[]" name="not_list[3][status]" value="1" />
+    </td>
+    <td class="odd">このページをブックマークする</td>
+  </tr>
+        <tr>
+        <td class="even" rowspan="3">一般</td>
+
+        <td class="odd">
+    
+     <input type="checkbox" id="not_list[]" name="not_list[4][status]" value="1" />
+    </td>
+    <td class="odd">誰かが私に挑戦をしたときに通知を受け取る <!-- Notify me when someone challenges me to a game. --></td>
+  </tr>
+    <tr>
+        <td class="odd">
+
+    
+     <input type="checkbox" id="not_list[]" name="not_list[5][status]" value="1" />
+    </td>
+    <td class="odd">新しく「相手を指定せず挑戦」のゲームが作成された時に通知を受け取る <!-- Notify me when a new open-challenge game is created. --></td>
+  </tr>
+    <tr>
+        <td class="odd">
+    
+    <input type="checkbox" id="not_list[]" name="not_list[6][status]" value="1" />
+    </td>
+    <td class="odd">私の挑戦が受け入れられた時に通知を受け取る <!-- Notify me when someone accepts my challenge to a game. --></td>
+  </tr>
+      <tr>
+    <td class="foot" colspan="3" align="center"><input type="submit" name="not_submit" value="今すぐ更新" /></td>
+  </tr>
+</table>
+<div align="center">
+通知方法：:&nbsp;メール&nbsp;&nbsp;[<u>変更</u>]
+
+</div>
+
+<p>ここで「このゲームでムーブが進んだ時に通知を受け取る」にチェックして「今すぐ更新」ボタンを押すと、通知を受け取ることができます。その下の「このページにコメントが追加された際に通知する」にもチェックをすると、コメント欄への投稿があったときにも通知を受け取ることができます。</p>
+
+
+<p>通知を受け取る方法は、メールとプライベート・メッセージから選択することができます。表の一番下の「通知方法」のところから「変更」をクリックすると、プロフィールの編集画面になりますので、「イベント更新通知メッセージの受取方法」から設定をしてください。</p>
+
+<p>「メール」を選んだときには、メールにて通知を受け取ることができます。「プライベート・メッセージ」を選んだときには、ログインしたときの「受信箱」にて通知を受け取ることができます。チェスのムーブが進んだときにだけログインをする、という使い方をする場合には、メールにて通知を受け取る設定にしておくと便利です。</p>
+
+<h2>千葉チェスをお探しの方へ</h2>
+
+<p>このページは、旧「千葉チェスのページ」でしたが、千葉チェスの活動は停止し、「
+チェス対局システム」のページに変えました。リンクをしてくださっている方はタイトル
+を変更していただけると助かります。</p>
+
+<h2>チェス関係のページ</h2>
+<ul>
+  <li><a href="variant/index.html">変則チェスのページ</a> </li>
+  <li><a href="http://seki.jpn.org/modules/pukiwiki/index.php?%A5%C1%A5%A7%A5%B9%A5%EA%A5%F3%A5%AF">チェスリンク</a> </li>
+  <li><a href="../photo/chess/">千葉チェス写真館</a>
+   <li><a href="bbs.html">千葉チェス掲示板過去ログ</a
+</ul>
+
+<HR>
+<CENTER><A HREF="../index.html"><img src="../icons/logo.png" alt="関勝寿のホームページ" width=85 height=39 border=0>ホームページへ戻る</A></CENTER>
+</P>
+
+<P>
+
+<P><A HREF="../message.html">ご意見、ご感想</A></P>
+
+</body>
+</html>

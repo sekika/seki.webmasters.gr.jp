@@ -1,0 +1,494 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+ "http://www.w3.org/TR/PR-html40/loose.dtd">
+<HTML lang="ja">
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=EUC_JP">
+  <TITLE>バックギャモンのボードを作る</TITLE>
+</HEAD>
+
+<script language=JavaScript1.2>
+var points = new Array(
+"p", "", "_0",
+"d", "", "_0",
+"p", "", "_0",
+"d", "", "_0",
+"p", "", "_0",
+"d", "", "_0",
+"p", "", "_0",
+"d", "", "_0",
+"p", "", "_0",
+"d", "", "_0",
+"p", "", "_0",
+"d", "", "_0",
+"d", "", "_0",
+"n", "", "_0",
+"d", "", "_0",
+"n", "", "_0",
+"d", "", "_0",
+"n", "", "_0",
+"d", "", "_0",
+"n", "", "_0",
+"d", "", "_0",
+"n", "", "_0",
+"d", "", "_0",
+"n", "", "_0"
+);
+
+var bar = new Array (
+	"_0",
+	"_0"
+	);
+
+var off = new Array (
+	"o_w_0.gif",
+	"o_b_0.gif"
+	);
+
+var cube = new Array (
+	"_0",
+	"_blank",
+	"_0"
+	);
+	
+function notEmpty(s) {
+if (s == "" || s[0] == " ")
+	return false;
+else
+	return true;
+}
+
+function greaterOf(a,b) {
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+
+function lesserOf(a,b) {
+	if (a < b)
+		return a;
+	else
+		return b;
+}
+
+function setarrays() {
+
+for (i=1, j=0; j < 24; j++, i+=3) {
+	if (notEmpty(document.forms[0].p[j].value)) {
+		points[i] = "_" + document.forms[0].p[j].value.substring(0,1);
+		points[i+1] = "_" + document.forms[0].p[j].value.substring(1);
+		}
+	}
+
+if (notEmpty(document.forms[0].o_white.value)) {
+	off[0] = "o_w";
+	if (document.forms[0].o_white.value.substring(0,1) < "0" || document.forms[0].o_white.value.substring(0,1) > "9")
+		document.forms[0].o_white.value = document.forms[0].o_white.value.substring(document.forms[0].o_white.value.length);
+	off[0] = off[0] + "_" + document.forms[0].o_white.value + ".gif";
+}
+if (notEmpty(document.forms[0].o_blue.value)) {
+	off[1] = "o_b";
+	if (document.forms[0].o_blue.value.substring(0,1) < "0" || document.forms[0].o_blue.value.substring(0,1) > "9")
+		document.forms[0].o_blue.value = document.forms[0].o_blue.value.substring(1,document.forms[0].o_blue.value.length);
+	off[1] = off[1] + "_" + document.forms[0].o_blue.value + ".gif";
+	}
+if (notEmpty(document.forms[0].b_blue.value)) {
+	if (document.forms[0].b_blue.value.substring(0,1) < "0" || document.forms[0].b_blue.value.substring(0,1) > "9")
+		document.forms[0].b_blue.value = document.forms[0].b_blue.value.substring(1,document.forms[0].b_blue.value.length);
+	bar[0] = "_" + document.forms[0].b_blue.value;
+	}
+if (notEmpty(document.forms[0].b_white.value)) {
+	if (document.forms[0].b_white.value.substring(0,1) < "0" || document.forms[0].b_white.value.substring(0,1) > "9")
+		document.forms[0].b_white.value = document.forms[0].b_white.value.substring(1,document.forms[0].b_white.value.length);
+	bar[1] = "_" + document.forms[0].b_white.value;
+	}
+if (document.forms[0].r_cube[0].checked) {
+	cube[1] = "_center";
+	}
+if (document.forms[0].r_cube[1].checked) {
+	cube[0] = "_" + document.forms[0].c_value.value;
+	}
+if (document.forms[0].r_cube[2].checked) {
+	cube[2] = "_" + document.forms[0].c_value.value;
+	}
+
+d1 = document.forms[0].r_value.value.substring(0,1);
+d2 = document.forms[0].r_value.value.substring(1,2);
+dice = lesserOf(d1, d2) + greaterOf(d1, d2);
+
+if (document.forms[0].r_roll[1].checked) {
+	roll = dice + "left"
+	onroll = "w";
+	}
+else if (document.forms[0].r_roll[2].checked) {
+	roll = dice + "right";
+	onroll = "b";
+	}
+else {
+	roll = "";
+	onroll = "c";
+	}
+
+	imgdir = "http://purl.org/net/seki/gammon/images/";
+}
+
+function notUsed() {
+if (r_roll[0].checked)
+	roll = "";
+else {
+	side = iif(r_roll[1].checked, "left", "right");
+	roll = r_value.value + side;
+document.write(roll);
+	roll = lesserOf(r_value.value.substring(0,1), r_value.value.substring(1,2)) +
+				 greaterOf(r_value.value.substring(0,1), r_value.value.substring(1,2)) + side;
+	}
+}
+
+function pipCountWhite() {
+	var total = 0;
+	
+for (var i = 1, j = 1; j < 13; i +=3, j++) {
+	if (points[i] == "_w")
+		total += (j * points[i+1].substring(1));
+	}
+	
+for (j = 24; j > 12; i+=3, j--) {
+	if (points[i] == "_w")
+		total += (j * points[i+1].substring(1));
+	}
+total += 25 * document.forms[0].b_white.value;
+return total;
+}
+
+function pipCountBlue() {
+	var total = 0;
+	
+	for (var i = 1, j = 24; j > 12; i +=3, j--) {
+		if (points[i] == "_b")
+			total += (j * points[i+1].substring(1));
+	}
+	
+	for (j = 1; j < 13; i+=3, j++) {
+		if (points[i] == "_b")
+			total += (j * points[i+1].substring(1));
+	}
+total += 25 * document.forms[0].b_blue.value;
+return total;
+}
+
+function showboard(s) {
+setarrays();
+var w_pips = 0;
+var b_pips = 0;
+var ow = off[0];
+var ob = off[1];
+var bw = "b_dn" + bar[1] + ".gif";
+var bb = "b_up" + bar[0] + ".gif";
+var c_up = "c_up" + cube[0] + ".gif";
+var r = roll;
+var o = onroll;
+var idir = imgdir;
+var c_center = "c" + cube[1] + ".gif";
+var c_dn = "c_dn" + cube[2] + ".gif";
+
+var pt = new Array (
+"", "", "", "", "", "", 
+"", "", "", "", "", "",
+"", "", "", "", "", "",
+"", "", "", "", "", ""
+);
+	
+for (var i=0, j=0; i<12; i++, j+=3)
+	pt[i] = "p_u" + points[j] + points[j+1] + points[j+2] + ".gif";
+	
+for (; i<24; i++, j+=3)
+	pt[i] = "p_d" + points[j] + points[j+1] + points[j+2] + ".gif";
+
+w_pips = pipCountWhite();
+b_pips = pipCountBlue();
+if (s == "HTML")
+	document.writeln('<XMP>');
+document.writeln('<TABLE><TR>');
+document.writeln('<td valign=top width=25> ', w_pips, ' <br><br><br><br><br><br><br><br> ', b_pips, '</td>');
+document.write('<TD valign=top width=300><IMG');
+
+if (o == "w")
+	document.write(" SRC=", idir, "n_low.gif WIDTH=291 HEIGHT=18><IMG");
+else
+	document.write(" SRC=", idir, "n_high.gif WIDTH=291 HEIGHT=18><IMG");
+
+document.write(" SRC=", idir, ow, " WIDTH=25 HEIGHT=66><IMG");
+
+for (var i=0; i<6; i++) {
+	document.write(" SRC=", idir, pt[i], " WIDTH=18 HEIGHT=66><IMG");
+	}
+
+document.write(" SRC=", idir, bb, " WIDTH=25 HEIGHT=66><IMG");
+
+for (; i<12; i++) {
+	document.write(" SRC=", idir, pt[i], " WIDTH=18 HEIGHT=66><IMG");
+	}
+
+document.write(" SRC=", idir, c_up, " WIDTH=25 HEIGHT=66><IMG");
+document.write(" SRC=", idir, "b_center", r, ".gif WIDTH=267 HEIGHT=20><IMG");
+document.write(" SRC=", idir, c_center, " WIDTH=24 HEIGHT=20><IMG");
+document.write(" SRC=", idir, ob, " WIDTH=25 HEIGHT=66><IMG");
+
+for (; i<18; i++) {
+	document.write(" SRC=", idir, pt[i], " WIDTH=18 HEIGHT=66><IMG");
+	}
+
+document.write(" SRC=", idir, bw, " WIDTH=25 HEIGHT=66><IMG");
+
+for (; i<24; i++) {
+	document.write(" SRC=", idir, pt[i], " WIDTH=18 HEIGHT=66><IMG");
+	}
+
+document.write(" SRC=", idir, c_dn, " WIDTH=25 HEIGHT=66><IMG");
+
+if (o == "w")
+	document.write(" SRC=", idir, "n_high.gif WIDTH=291 HEIGHT=18>");
+else
+	document.write(" SRC=", idir, "n_low.gif WIDTH=291 HEIGHT=18>");
+
+document.writeln("<TR><td colspan=2 align=center><font size=1>");
+document.writeln("<a href=http://purl.org/net/seki/gammon/board.html><B><I>Create diagram</i></b></a></font></TABLE>");
+if (s == "HTML")
+	document.writeln('</XMP>');
+}
+
+function initArrays() {
+	for (var i = 0; i < 24; i++)
+		document.forms[0].p[i].value = "";
+	
+	bar[0] = "_0";
+	bar[1] = "_0";
+
+	off[0] = "o_w_0.gif";
+	off[1] = "o_b_0.gif";
+
+	cube[0] = "_0";
+	cube[1] = "_blank";
+	cube[2] = "_0";
+	
+	for (i=0; i<3; i++)
+		document.forms[0].r_roll[i].checked = false;
+		
+	for (i=0; i<3; i++)
+		document.forms[0].r_cube[i].checked = false;
+		
+	document.forms[0].c_value.value = "";
+	document.forms[0].r_value.value = "";
+	document.forms[0].b_blue.value = "";
+	document.forms[0].b_white.value = "";
+	document.forms[0].o_blue.value = "";
+	document.forms[0].o_white.value = "";
+}
+
+function startPos() {
+	initArrays();
+	document.forms[0].p[0].value = "b2";
+	document.forms[0].p[5].value = "w5";
+	document.forms[0].p[7].value = "w3";
+	document.forms[0].p[11].value = "b5";
+	document.forms[0].p[23].value = "w5";
+	document.forms[0].p[19].value = "b3";
+	document.forms[0].p[17].value = "b5";
+	document.forms[0].p[12].value = "w2";
+}
+</script>
+<BODY background="../back/47.gif">
+
+<H1 align="center">ギャモンボードの図作成</H1>
+
+<p>
+バックギャモンの掲示板に、ギャモンボードの図を書き込むために作られたページです。掲示板は、すでに閉鎖されました。
+</p>
+
+<!-- ------------------------------------------------------------ -->
+
+<TABLE><TR>
+<td valign=top width=25> 167 <br><br><br><br><br><br><br><br> 167</td>
+<TD valign=top width=300><IMG SRC=images/n_high.gif WIDTH=291 HEIGHT=18><IMG SRC=images/o_w_0.gif WIDTH=25 HEIGHT=66><IMG SRC=images/p_up_b_2.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_ud_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_up_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_ud_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_up_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_ud_w_5.gif WIDTH=18 HEIGHT=66><IMG SRC=images/b_up_0.gif WIDTH=25 HEIGHT=66><IMG SRC=images/p_up_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_ud_w_3.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_up_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_ud_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_up_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_ud_b_5.gif WIDTH=18 HEIGHT=66><IMG SRC=images/c_up_0.gif WIDTH=25 HEIGHT=66><IMG SRC=images/b_center.gif WIDTH=267 HEIGHT=20><IMG SRC=images/c_blank.gif WIDTH=24 HEIGHT=20><IMG SRC=images/o_b_0.gif WIDTH=25 HEIGHT=66><IMG SRC=images/p_dd_w_2.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dn_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dd_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dn_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dd_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dn_b_5.gif WIDTH=18 HEIGHT=66><IMG SRC=images/b_dn_0.gif WIDTH=25 HEIGHT=66><IMG SRC=images/p_dd_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dn_b_3.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dd_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dn_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dd_0.gif WIDTH=18 HEIGHT=66><IMG SRC=images/p_dn_w_5.gif WIDTH=18 HEIGHT=66><IMG SRC=images/c_dn_0.gif WIDTH=25 HEIGHT=66><IMG SRC=images/n_low.gif WIDTH=291 HEIGHT=18>
+</TABLE>
+
+
+
+<form action="showboard.html" method=post id=form1 name=form1>
+<table border=0>
+	<tr>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+		<td width="7%"></td>
+	</tr>
+  <TR>
+	<th	 colspan=14 align=middle>
+		<font size=4>チェッカー</font>
+	</th>
+	</TR>
+	<tr>
+		<td>Off</td><td>24</td><td>23</td><td>22</td><td>21</td><td>20</td><td>19</td><td>Bar</td><td>18</td><td>17</td><td>16</td><td>15</td><td>14</td><td>13</td>
+	</tr>
+	<tr>
+		<td><input size=2 name=o_white></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=b_blue></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+	</tr>
+	<tr>
+		<td><input size=2 name=o_blue></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=b_white></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+		<td><input size=2 name=p></td>
+	</tr>
+	<tr>
+		<td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td></td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+	</tr>
+</table><p>
+<table width=320>
+	<tr>
+		<td width="140"></td>
+		<td width="40"></td>
+		<td width="140"></td>
+	</tr>
+  <TR>
+	<th>
+		<font size=4>キューブ</font>
+	</th>
+	<th>&nbsp;</th>
+	<th>
+		<font size=4>ダイス</font>
+	</th>
+
+	<tr>
+		<td><input type=radio id=r_cube name=r_cube>中央</td>
+		<td>&nbsp;</td>
+		<td><input type=radio id=r_roll name=r_roll>キューブの問題</td>
+	</tr>
+	<tr>
+		<td><input type=radio id=r_cube name=r_cube>上</td>
+		<td>&nbsp;</td>
+		<td><input type=radio id=r_roll name=r_roll>白</td>
+	</tr>
+	<tr>
+		<td><input type=radio id=r_cube name=r_cube>下</td>
+		<td>&nbsp;</td>
+		<td><input type=radio id=r_roll name=r_roll>青</td>
+	</tr>
+	<tr>
+		<td>倍率:&nbsp;<input name=c_value size=2></td>
+		<td>&nbsp;</td>
+		<td>目:&nbsp;<input name=r_value size=2></td>
+	</tr>
+</table>
+<br>
+<table width=400>
+	<tr>
+		<td width=80>
+			<INPUT id=button1 name=button1 type=button value="ボード表示" onClick='showboard("Images")'>
+		</td>
+		<td width=20>&nbsp;</td>
+		<td width=80>
+			<INPUT id=button1 name=button1 type=button value="HTML 表示" onClick='showboard("HTML")'>
+		</td>
+		<td width=20>&nbsp;</td>
+		<td width=80>
+			<INPUT id=button2 name=button2 type=button value="クリア" onClick=initArrays()>
+		</td>
+		<td width=20>&nbsp;</td>
+		<td width=80>
+			<INPUT id=button2 name=button2 type=button value="初期配置" onClick=startPos()>
+		</td>
+	</tr>
+</table>
+</form></CENTER>
+<!-- P>For each <STRONG>point</STRONG>, fill in 
+the color (w or b) and number of checkers (max 9).<BR>For example the starting 
+position would be "b2" in the 24 block, "w5" in the 19 block, "w3" in the 17 
+block, etc. </FONT></P -->
+
+<p>
+<strong>数字のところ</strong>には、チェッカーの色と数(9個まで)をいれてください。
+色は、白は w、青は b とします。
+たとえば、初期配置は 24 のところに b2、19 のところに w5、17 のところに w3、
+などといれていきます。
+</p>
+
+<!-- P align=left><FONT color=black size=3>For checkers borne <STRONG>off</STRONG>, 
+the top box is automatically <STRONG>white </STRONG>and the bottom is 
+<STRONG>blue</STRONG> .&nbsp; It is only necessary to put in the number of 
+checkers (ie, leave off the 'b' or 'w').</FONT></P -->
+
+<p>
+ベアオフしたチェッカー (<strong>Off</strong>) は、
+色が自動的に決まるので(上が白で、下が青)、チェッカーの数を
+書き入れるだけです。つまり、w や b はいらないということです。
+</p>
+
+<!-- P align=left><FONT color=black size=3>For checkers on the <STRONG>bar</STRONG>, 
+the top box is automatically <STRONG>blue </STRONG>and the bottom is 
+<STRONG>white</STRONG>.&nbsp; Again, only enter the number of 
+checkers.</FONT></P -->
+
+<p>
+また、<strong>bar</strong> にあるチェッカーは、上が青で下が白になります。
+したがって、この場合もチェッカーの数だけを記入してください。
+</p>
+
+<p>
+<strong>キューブ</strong>は、キューブの位置を中央、上、下から選んで、倍率 (2, 4, 8, 16, 32) を書いてください。
+<strong>ダイス</strong>は、白がダイスを振ったときは白を、青がダイスを振ったときは青を選択し、ダイス目を 23 のように２桁の数字で記入してください。
+</p>
+
+<!-- P align=left><FONT color=#000000 size=3>Once the position displays correctly, 
+choose "Show HTML."&nbsp; Then simply <STRONG>copy</STRONG> all the HTML and 
+<STRONG>paste</STRONG> it into your 
+post.</FONT></P></CENTER></FONT -->
+
+<p>
+図面の入力が終ったら、「ボード表示」にてその図面を確認できます。
+</p>
+
+
+<hr>
+<p>
+<a href="http://home.carolina.rr.com/backgammonclub/">The Charlotte Backgammon Club</a>
+の許可の下、
+<a href="http://home.carolina.rr.com/backgammonclub/GammOnLine/Board/board.html">GO-Figure</a>
+を使わせていただいています。
+</p>
+
+
+</BODY>
+</HTML>

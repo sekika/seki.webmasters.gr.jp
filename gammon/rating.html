@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+ "http://www.w3.org/TR/PR-html40/loose.dtd">
+<HTML lang="ja">
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html;CHARSET=Shift_JIS">
+  <TITLE>バックギャモンサーバーのレート計算方法について</TITLE>
+  <META name="author" content="Katsutoshi Seki">
+  <META name="copyright" content="&copy; 1998 Katsutoshi Seki">
+  <LINK REV=MADE HREF="mailto:seki@ylug.org">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="gammon.css">
+</HEAD>
+
+<body>
+
+<a href="http://purl.org/net/seki/"><img src="../icons/logo.png" alt="ホームページ" border=0 width=82 height=39 align=right></a><br clear=all>
+
+<H1>バックギャモンサーバーのレート計算方法について</H1>
+
+<p>バックギャモンを遊べるサーバーでは、対戦成績がレーティングという値に反映されるレーティングシステムが採用されている場合が多いのですが、その計算方法については、あまり十分に記述されていません。たとえば、<a href="http://games.yahoo.co.jp/games/">ヤフーゲーム</a>では、<a href="http://help.yahoo.co.jp/help/jp/games/play/play-03.html">レーティングについて</a>にその概要が説明されていますが、どこにも計算式が書かれていないため、具体的な計算方法は分かりません。このページでは、バックギャモンサーバーのレート計算方法について記述します。また、将棋、チェスなどのレート計算方法との比較も試みます。</p>
+
+
+<H2>FIBS (First Internet Backgammon Server)</H2>
+
+<p>
+<a href="http://www.fibs.com/">FIBS</a>では、<a href="http://www.fibs.com/ratings.html">レーティングの計算方法</a>が解説されています。その解説によれば、FIBSでは以下のようにレーティングが計算されます。
+</p>
+<p>まずは、期待勝率が以下のように計算されます。</p>
+<blockquote>
+E = 1-(1/(10^(D*√N/2000)+1))<br>
+ただし、
+E: 期待勝率, D: レーティングの差 (自分 - 相手), N: マッチの長さ
+</blockquote>
+<p>
+そして、K (Match value) が以下の式から計算されます。
+</p>
+<blockquote>
+K = 4*√N
+</blockquote>
+<p>
+このようにして求めれたEとKから、レート変動が以下のように計算されます。
+</p>
+<blockquote>
+勝った場合: レート上昇 = K * (1-E)<br>
+負けた場合: レート下降 = K * E
+</blockquote>
+
+<p>
+経験値が400になるまでの間は、さらに以下の補正が行われます。
+</p>
+<blockquote>
+(新しいレート変動値) = (古いレート変動値) * (5 - (試合終了時の経験値/100)
+</blockquote>
+
+<p>
+例えば、自分のレートが1500、相手のレートが1700で、5ポイントマッチをして勝ったとします。まず、経験値が400以上の場合には、D=-200, N=5より
+<blockquote>
+E = 1-(1/(10^(-200*√5/2000)+1)) = 0.374
+</blockquote>
+となり、レート上昇は
+<blockquote>
+K * (1-E) = 4√5 * (1-0.374) = 3.35
+</blockquote>
+つまり、試合後のレートは1503.35となります。ここで、経験値が0だった場合には、試合後の経験値が5になるので、5-5/100 = 4.95倍のレート変動、つまり 3.35 * 4.95 = 16.58 のレート変動となります。
+</p>
+
+<p>
+このFIBSのレーティングの式は、「期待勝率がレーティング差のロジスティック曲線によって表される」というチェスのEloの式を元にしています。ポイントマッチの才のマッチポイントの長さをどう評価するか、という点が式に入っています。</p>
+
+<h2>GamesGrid</h2>
+<p>
+<a href="http://www.gamesgrid.com/backgammon/">GamesGrid Backgammon</a>では<a href="http://www.gamesgrid.com/backgammon/faq-ratings.html">レートシステムの解説</a>にあるように、FIBSと非常に似通ったレートシステムが採用されています。ところが、実際にレート変動をFIBSの式に入れてみると、若干値が異なります。つまり、FIBSの式そのものではなく、若干修正した式を用いているようです。
+</p>
+
+<p>
+また、経験値が少ないときの補正に関しては、経験値が500までの期間についてレート変動が大きくなるという補正をしているようです。
+</p>
+
+<p>いくつかのレート変動の値からGamesGridにおける計算式を推定しようと試みたころ、以下の事実が分かりました。</p>
+<ol>
+<li>1ポイントマッチと2ポイントマッチではレート変動が等しい。つまり、2ポイントマッチではN=1として計算がされている。これは、2ポイントマッチではイニシャルキューブを打てば実質的に1ポイントマッチと変わらないためであると考えられる。</li>
+<li>Match value の式に関しては、FIBSと同じ K = 4*√N が採用されている。
+<li>期待勝率の関数形は、おそらくロジスティック関数形を採用している。
+</ol>
+<p>レーティングの計算式に関しては、以下の式を仮定してみます。</p>
+<blockquote>
+E = 1-(1/(10^(D/a)+1))<br>
+a = b/(N^c)<br>
+ただし、b,cは定数
+</blockquote>
+<p>この式で、b=2000, c=0.5 とすると、FIBSの式に等しくなります。b=2100, c=5/9 とすると、FIBSの式よりもGamesGridのレート変動に近くなるのですが、まだ一致しません。もしかすると、もう少し複雑な計算式が使われているのかもしれません。</p>
+
+<p class="note">
+[Note] この式において、cの値は「マッチが長くなることによって上位者が有利になる度合い」をあらわし、bの値は「実力差が同じ場合のレート差の大きさ」をあらわしている、と定性的に表現することができます。bの値は、任意に設定してかまわない値であるのに対し、cの値は、正確に定めようとすれば、数多くの対戦結果から経験的に定めるよりありません。FIBSではc=0.5と定めていますが、この値が適切であるという理論的根拠はありません。GamesGridでは、a = b/(N^c) のところを a = f(N)と表記して、経験的に定められた関数を使っている可能性もあります。[/Note]
+</p>
+
+<h2>ヤフーゲーム</h2>
+
+<p>
+<a href="http://games.yahoo.co.jp/">ヤフーゲーム</a>のレーティング計算方法については、分かりません。
+なにか分かったら、ここに加筆します。
+ご存知の方は、<a href="../message.html">教えて</a>いただけると幸いです。
+</p>
+
+<h2>Yahoo! Games</h2>
+
+<p>
+<a href="http://games.yahoo.com/">米国版 Yahoo! Games</a>では、<a href="http://help.yahoo.com/help/us/games/play/play-03.html">FIBSの式が使われている</a>とのことです。
+</p>
+
+<h2>他のボードゲームとの比較</h2>
+
+<p>
+3種類のボードゲームについて、レーティング計算方法の比較表を作成しました。
+</p>
+
+<table border="1">
+<tr>
+<td>ゲーム<td>場所<td>期待勝率の関数形<td>関数のパラメータ
+</tr>
+<tr>
+<td>バックギャモン<td><a href="http://www.fibs.com/">FIBS</a><td>ロジスティック<sup>1)</sup><td>a=2000/√N, K=4*√N
+</tr>
+<tr>
+<td>チェス<td><a href="http://www.fide.com/">FIDE</a><td>ロジスティック<sup>1)</sup><td>a=400, <a href="http://chess.about.com/od/organizations/ss/aa04l04_5.htm">K=10～25</a>
+</tr>
+<tr>
+<td>将棋<td><a href="http://www.shogidojo.com/">将棋道場24</a><td>線形<sup>2)</sp><td>a=400, K=32
+</tr>
+</table>
+
+<ol>
+<li>ロジスティック：E = 1 - (1/(10^(D/a)+1))
+<li>線形：E = 0.5 + D/2a (-a < D < a)
+</ol>
+
+<p>
+このように、レートの計算には期待勝率がレーティング差のロジスティック関数であらわされるという計算法と、線形であらわされるという計算があります。そこで、ロジスティック関数と線形関数において、a=400とした計算を比較してみました。
+</p>
+
+<img src="rate.png" alt="winning probability" width="393" height="364">
+
+<p>
+線形関数については、レーティング差が400を超えると、期待勝率が0から1の間におさまらなくなります。そこで、線形関数を採用する場合には、それ以上のレート差の戦いは無効であるとする必要があります。期待勝率が2割から8割の間、つまりレート差が240以内の間では、線形とロジスティックは非常に似通った関数形を示すのに対し、レート差が240以上になると、両者の差が開きます。したがって、期待勝率として線形関数を採用している場合には、このグラフの場合はレート差が400付近の相手と戦う場合に、レート上位者がかなり「損をする」といった現象が生じます。
+</p>
+
+<h2>リンク</h2>
+
+<ul>
+<li><a href="http://www10.plala.or.jp/greenstone/link.html">レーティング関連サイト</a> レーティングのサイトとそれを読み解くのに必要な数学のサイトを集めたリンク集です。
+<li><a href="http://www.shogidojo.com/dojo/rating.htm">レーティング将棋について</a> 将棋倶楽部24におけるレーティングの計算方法について解説されています。
+<li><a href="http://en.wikipedia.org/wiki/Elo_rating">ELO rating system - Wikipedia</a> チェスで使われているEloレーティング理論について解説されています。英語です。
+<li><a href="http://www.ratingtheory.com/">Back to Basics in Rating Theory</a> チェスのレーティング理論について、その成り立ちから丁寧に解説しています。英語です。
+
+</ul>
+
+<hr>
+<p> <a href="index.html">バックギャモンのページ</a> </p>
+<p> <a href="../index.html">ホームページ</a> </p>
+</body>
+</html>

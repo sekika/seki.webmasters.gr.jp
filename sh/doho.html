@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+        "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html>
+ <head>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-2022-JP">
+  <title>同報メーラー</title>
+  <META NAME="author" LANG="ja" CONTENT="Katsutoshi Seki">
+  <META NAME="copyright" CONTENT="Katsutoshi Seki">
+  <META NAME="DESCRIPTION" CONTENT="Shell Script">
+  <META NAME="keywords" CONTENT="Katsutoshi Seki">
+  <LINK REV="made" HREF="mailto:seki@ylug.org">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="../seki.css">
+</head>
+
+<body>
+
+<h1>同報メーラー</h1>
+
+<p>
+年賀状メールを書くときに使えます。
+まだ、使ったことはありません。(笑)
+昔、VB で作った
+<a href="http://purl.org/net/seki/developing.html">同報メーラー</a>
+を使って年賀状を書いたことはあります。
+</p>
+
+<p>
+こういったソフトは、どうやらいくつか
+<a href="http://computers.yahoo.co.jp/download/vector/win/net/mail/">出回っている</a>
+ようで、私のように年賀状を書くのに使うのならばともかく、
+SPAM 送信に使われるとすれば残念。
+このページを見る方が、仮に無差別な広告メールを送りつけるための
+ソフトを検索してきたとしたら、警告します。
+やめてください。そんなメールを受け取ったら、その企業の印象が
+悪くなるだけで、何もいいことはありません。
+私のところに来たら、確実に
+<a href="http://www.spams.f2s.com/">さらします</a>。
+Google でも同報メーラーでトップに来る程有名になってしまったので、
+逆に「無差別かつ大量の相手にメールは送らないでください」という
+メッセージを送るために、このページを使わせていただきます。
+もちろん、年賀状のように知合いにメールを送る、といった目的で
+検索された方は、どうぞ使ってください。ただし、必ずしも誰にも
+使えるソフトとは言えません。sendmail が使える shell が必要ですから。
+いずれにしても、ここのスクリプトを自分で利用できるほどの技量が
+あれば、誰でも自作できるスクリプトなので、スクリプトを公開する
+ことによるスパマーへの補助にはならないと思います。
+</p>
+
+<p>
+私の場合は、ほとんどは同じ文面だけど、相手によって一言ずつ
+メッセージを加えたい、という場合にこのソフトを使います。
+そうでなければ、To に連ねるか Bcc で十分。
+一人一人にメッセージをそえるためには、一気にメールを
+送信されてしまっては面白くなく、テンプレートファイルを作って、
+それを編集するという操作をかませる必要があります。
+このスクリプトは、そういう構成になっています。
+</p>
+
+<p>
+たるいので、説明はしません。
+このスクリプトを直接読んで理解して、自分仕様に
+書き換えることが出来る人<strong>のみ</strong>
+使用してください。
+使用法を間違えて、変なメールを送信して迷惑を
+かけることのないように。
+</p>
+
+<p>
+<a href="doho.txt">テキスト</a>
+でダウンロードできます。
+</p>
+
+<p>
+YLUG にて、同じようなスクリプトを自作している人が、
+添付ファイルを送信するツールはないかという質問をして、
+それに対して mpack を使うといいという回答があった。
+mpack をかませようとすればできないこともないだろうけど、
+ちょっとややこしくなるし、画像ファイルを添付するくらい
+だったら、Web にのっけて URL を送信する方がいいかな、
+とも思うので、当面はその機能をつける予定なし。
+</p>
+
+<p>
+せっかく作ったことなので、来年あたりは使ってみるか。
+せっかくならば、cron に
+<blockquote>
+0 0 1 1 * $ScriptFile
+</blockquote>
+とかなんとか仕込んでおこう、とかみんながやり出すと、
+その時間の瞬間的インターネットパケットはすごいことに
+なるんだろうな。
+その時間は、電話もつながりにくくなるようだし。
+もっとも、メールに関してはそこまでする人はまだ小数派？
+だろうから、それほど気にすることないか。
+</p>
+
+<hr>
+
+<a href="../index.html">スクリプト</a>
+
+
+<DIV CLASS="copyright">
+Copyright (C) 1996-2001  <A HREF="http://seki.webmasters.gr.jp/">関　勝寿</A>.  All rights reserved.<BR>
+$Date: 2005/03/18 11:49:21 $ (UTC)
+</DIV>
+
+</body>
+</html>

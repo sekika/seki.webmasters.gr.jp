@@ -1,0 +1,138 @@
+body {
+  background-image: url(http://homepage1.nifty.com/seki/back/47.png);
+  color: black;
+  font-size: 15px;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+h1 {
+  color            : #000080;
+  font-size        : 30px; 
+  font-style       : italic;
+  text-align       : center; 
+  font-weight      : bolder;  
+}
+
+h2 {
+  font-size        : 24px; 
+  text-align       : left; 
+  font-weight      : bold;
+  color            : #408080; 
+  background-color : #ececec; 
+  margin-right     : 0; 
+  padding          : 7px 7px 7px 10px;
+  border-color     : #000080;
+  border-width     : 2px 0px 2px 0px;
+  border-style     : solid;
+}
+
+h3 {
+  font-size        : 20px;
+  text-align       : left;
+  color            : #009000;
+  font-weight      : bold; 
+  background-color : #ececec; 
+  margin-right     : 0; 
+  padding          : 0.25em 0em 0.25em 0.7em;
+  border-color     : #009000;
+  border-style     : solid;
+  border-width     : 1px 0em 0em 10px;}
+
+h4 {
+  font-size        : 17px;
+  font-weight      : bold;
+  text-align       : left;
+  color            : #800080;
+  background-color : #ececec; 
+  margin-right     : 0em; 
+  padding          : 0.25em 0em 0.25em 0.7em; 
+  border-color     : #800080;
+  border-style     : solid;
+  border-width     : 1px 0em 0em 5px; 
+}
+
+blockquote {
+  font-size        : 15px;
+  color            : black;
+  color: #330000;
+  background-color: rgb(95%, 100%, 95%);
+  padding:6pt;
+  border-style:outset;
+  border-color: rgb(50%, 80%, 50%);
+  border-width:4pt
+}
+
+
+a.name  {
+  text-decoration  : none;
+}
+
+A:Hover	{
+  background-color : #ffff80;
+}
+
+p {
+  font-size        : 15px;
+  color            : black;
+  text-indent: 1em;
+}
+
+p.note {
+  text-indent: 0em;
+  margin-left: 25%;
+  font-size: smaller;
+}
+
+dl.list {
+  font-size        : 15px;
+  color            : black;
+  margin-left: 3%;
+}
+
+pre {
+  font-size: 15pix;
+  color: black;
+}
+
+strong {
+	color: #003333;
+	font-weight: bold;
+}
+
+dl dd {
+	font-size        : 15px;
+	color            : black;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+ul li {
+	font-size        : 15px;
+	color            : black;
+	padding-bottom: 0.3em;
+}
+
+em {
+	font-size        : 15px;
+	color: #330000;
+}
+
+div.lang-navigator {
+  text-align: left;
+  font-size: smaller;
+}
+
+div.copyright {
+  text-align: right;
+  font-family: helvetica, sans-serif;
+  font-size: smaller;
+  color: rgb(40%,40%,40%)
+}
+
+strong {
+	color            : red;
+	font-style       : normal; 
+	font-weight      : bold; 
+}
+

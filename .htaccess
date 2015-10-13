@@ -1,6 +1,8 @@
 Options FollowSymLinks Indexes
 AddType application/x-httpd-cgi .cgi
 
+RedirectMatch 404 /\.git
+
 <Files CVS>
   order allow,deny
   deny from all

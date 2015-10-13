@@ -1,0 +1,27 @@
+Options FollowSymLinks Indexes
+AddType application/x-httpd-cgi .cgi
+
+<Files CVS>
+  order allow,deny
+  deny from all
+</Files>
+
+# Formmail spammer
+deny from int-fri.edu.city.hiroshima.jp
+
+#KORNET-IDC
+deny from 61.78.59.0/255.255.251.0
+#KONET
+deny from 218.144.0.0/255.240.0.0
+#Naver.co.jp
+deny from 202.234.172.0/25
+deny from 219.163.205.160/27
+deny from 220.73.165.15/255.255.253.0
+#marunouchi.tokyo.ocn.ne.jp
+deny from 221.188.
+deny from 222.146.
+deny from 61.112.
+deny from 61.119.
+deny from 219.114.
+
+

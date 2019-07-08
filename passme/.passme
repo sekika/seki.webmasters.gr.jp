@@ -1,0 +1,8 @@
+SiteKeyFile = /home/seki/etc/passme.txt
+ShowMasterPass = False
+ShowPass = False
+CopyPass = False
+SeedLen = 30
+DefaultHash = sha3_384
+DefaultChar = an
+DefaultLen = 16

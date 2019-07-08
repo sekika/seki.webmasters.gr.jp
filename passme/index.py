@@ -55,8 +55,8 @@ def main():
 記号: <select name="char" id="char">
   <option value="an" selected>アルファベット + 数字
   <option value="ans">アルファベット + 数字 + 記号
-  <option value="a" selected>アルファベットのみ
-  <option value="n" selected>数字のみ
+  <option value="a">アルファベットのみ
+  <option value="n">数字のみ
 </select><br>
 文字数: サイト: <input type="text" name="len" id="len" size="2" maxlength="2" value="16">
 </form>''', flush=True)

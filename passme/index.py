@@ -52,6 +52,13 @@ def main():
 
 <form action="index.py" method="post">
 サイト: <input type="text" name="site" id="site" size="10" maxlength="10" value="">
+記号: <select name="char" id="char">
+  <option value="an" selected>アルファベット + 数字
+  <option value="ans">アルファベット + 数字 + 記号
+  <option value="a" selected>アルファベットのみ
+  <option value="n" selected>数字のみ
+</select>
+<li>回帰曲線: 線の太さ <input type="text"
 
 </form>''', flush=True)
 

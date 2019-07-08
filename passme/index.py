@@ -50,6 +50,7 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
 
+    os.system('python -V')
     list = subprocess.check_output(['passme', 'list']).split()
     print(list)
     print(list[0])

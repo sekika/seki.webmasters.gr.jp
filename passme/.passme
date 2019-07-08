@@ -1,4 +1,4 @@
-SiteKeyFile = /home/seki/etc/passme.txt
+SiteKeyFile = /home/seki/etc/output/passme.txt
 ShowMasterPass = False
 ShowPass = False
 CopyPass = False

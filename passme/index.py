@@ -55,7 +55,6 @@ def main():
     list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
     for i in range(len(list)):
     	list[i] = list[i].strip(",[]'")
-    print('<ul>')
 
     site = site.replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
 
@@ -104,6 +103,7 @@ def main():
 
     subprocess.check_call(['sh', 'output.sh'])
 
+    print('<ul>')
     for s in list:
     	print('<li>{0}'.format(s))
     print('</ul>')

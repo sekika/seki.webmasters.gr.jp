@@ -48,7 +48,12 @@ def main():
 </head>
 
 <body>
-<h1>Passme cgi</h1>''', flush=True)
+<h1>Passme cgi</h1>
+
+<form action="index.py" method="post">
+サイト: <input type="text" name="site" id="site" size="10" maxlength="10" value="">
+
+</form>''', flush=True)
 
     subprocess.check_call(['sh', 'output.sh'])
 

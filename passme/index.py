@@ -63,7 +63,7 @@ def main():
     desc = desc.replace('"','').replace("'",'')
 
     if site != 'none':
-        print('{0}'.format(site))
+        print('{0} {1} {2} {3}'.format(site, char, plen, desc))
         
         
         print('<hr>')

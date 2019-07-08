@@ -47,7 +47,7 @@ def main():
 </head>
 
 <body>
-<h1>Passme cgi</h1>''')
+<h1>Passme cgi</h1>''', flush=True)
     
     os.system('passme')
 

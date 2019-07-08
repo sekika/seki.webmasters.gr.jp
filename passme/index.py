@@ -51,7 +51,7 @@ def main():
 
 <body>
 <h1>Passme cgi</h1>''', flush=True)
-    print('site')
+    print(site)
 
     site = site.replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
     if len(site) < 1:

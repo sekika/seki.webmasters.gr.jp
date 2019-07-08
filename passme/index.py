@@ -37,7 +37,20 @@ def main():
     getlang = f.getfirst('lang', 'none')
     inputtext = f.getfirst('input', '')
 
-    print('<html><body><h1>test</h1></body></html>')
+    print('''<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Passme cgi</title>
+  <link rel="stylesheet" type="text/css" media="screen and (min-width:641px)" href="../seki.css">
+</head>
+
+<body>
+<h1>Passme cgi</h1>''')
+
+
+print('</body></html>')
 
     return
 

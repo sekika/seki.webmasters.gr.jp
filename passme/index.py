@@ -54,6 +54,8 @@ def main():
     print(site)
 
     site = site.replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
+    print(site)
+
     if len(site) < 1:
     	site = 'none'
     if char not in ['a', 'n', 'an', 'ans']:

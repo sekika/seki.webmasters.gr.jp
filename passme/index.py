@@ -64,7 +64,7 @@ def main():
 
     if site != 'none':
         with open("add.txt", "w") as f:
-            f.write('{0} {1} {2} {3}'.format(site, char, plen, desc))
+            f.write('{0}\n{1}\n{2}\n{3}\n\n'.format(site, char, plen, desc))
         
         
         print('<hr>')

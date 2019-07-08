@@ -66,7 +66,7 @@ def main():
     desc = desc.replace('"','').replace("'",'')
 
     if site != 'none':
-        with open("add.txt", "w") as f:
+        with open("add.txt", "w", encoding="utf-8") as f:
             f.write('{0}\n{1}\n{2}\n{3}\n\n'.format(site, char, plen, desc))
         
         

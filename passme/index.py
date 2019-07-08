@@ -51,15 +51,14 @@ def main():
 <h1>Passme cgi</h1>
 
 <form action="index.py" method="post">
-サイト: <input type="text" name="site" id="site" size="10" maxlength="10" value="">
+サイト: <input type="text" name="site" id="site" size="10" maxlength="10" value=""><br>
 記号: <select name="char" id="char">
   <option value="an" selected>アルファベット + 数字
   <option value="ans">アルファベット + 数字 + 記号
   <option value="a" selected>アルファベットのみ
   <option value="n" selected>数字のみ
-</select>
-<li>回帰曲線: 線の太さ <input type="text"
-
+</select><br>
+文字数: サイト: <input type="text" name="len" id="len" size="2" maxlength="2" value="16">
 </form>''', flush=True)
 
     subprocess.check_call(['sh', 'output.sh'])

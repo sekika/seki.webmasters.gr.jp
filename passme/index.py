@@ -50,7 +50,7 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
 
-    list = subprocess.check_output(['passme', list'])
+    list = subprocess.check_output(['passme', 'list'])
 
 
     # print footer

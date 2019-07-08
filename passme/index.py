@@ -51,8 +51,14 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
 
-    if site == 'none':
-        print('''<form action="index.py" method="post">
+    if site != 'none':
+        print('{0}'.format(site))
+        
+        
+        print('<hr>')
+
+
+    print('''<form action="index.py" method="post">
 サイト: <input type="text" name="site" id="site" size="10" maxlength="10" value=""><br>
 記号: <select name="char" id="char">
   <option value="an" selected>アルファベット + 数字
@@ -65,8 +71,6 @@ def main():
 </textarea></p>
 <p><input type="submit" value="追加する"></p>
 </form>''', flush=True)
-    else:
-        print('{0}'.format(site))
 
     print('<h2>サイト一覧</h2>', flush=True)
 

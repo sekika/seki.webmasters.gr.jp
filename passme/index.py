@@ -52,6 +52,11 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
 
+    list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
+    for i in range(len(list)):
+    	list[i] = list[i].strip(",[]'")
+    print('<ul>')
+
     site = site.replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
 
     if len(site) < 1:
@@ -63,6 +68,16 @@ def main():
     if plen < 4:
         plen = 16
     desc = desc.replace('"','').replace("'",'')
+
+    if site in list:
+        print('{0} はすでにあります'.format(site))
+        print('<hr>')
+        site = 'none'
+
+    if site in ['add', 'list', 'edit', 'html', 'test', 'ALL')]:
+        print('{0} は予約されています'.format(site))
+        print('<hr>')
+        site = 'none'
 
     if site != 'none':
         with open("add.sh", "w", encoding="utf-8") as f:
@@ -89,10 +104,6 @@ def main():
 
     subprocess.check_call(['sh', 'output.sh'])
 
-    list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
-    for i in range(len(list)):
-    	list[i] = list[i].strip(",[]'")
-    print('<ul>')
     for s in list:
     	print('<li>{0}'.format(s))
     print('</ul>')

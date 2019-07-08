@@ -86,7 +86,6 @@ def main():
         print('{0} 追加'.format(site))
         print('<hr>')
 
-
     print('''<form action="index.py" method="post">
 サイト: <input type="text" name="site" id="site" size="10" maxlength="10" value=""><br>
 記号: <select name="char" id="char">
@@ -114,6 +113,7 @@ def main():
     	print('<li>{0}'.format(s))
     print('</ul>')
 
+    print('<a href="passme.html">パスワード生成</a>')
     
     # print footer
 

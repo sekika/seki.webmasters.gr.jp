@@ -59,7 +59,9 @@ def main():
   <option value="a">アルファベットのみ
   <option value="n">数字のみ
 </select><br>
-文字数: サイト: <input type="text" name="len" id="len" size="2" maxlength="2" value="16">
+文字数: サイト: <input type="text" name="len" id="len" size="2" maxlength="2" value="16"><br>
+説明: <textarea name="desc" id="desc" rows="15" cols="4" wrap="off">
+</textarea></p>
 <p><input type="submit" value="追加する"></p>
 </form>
 

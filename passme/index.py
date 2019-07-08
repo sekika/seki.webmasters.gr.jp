@@ -58,7 +58,7 @@ def main():
 
     # print footer
 
-    print('<ht>')
+    print('<hr>')
     subprocess.check_call(['python3', '-V'])
     print('</body></html>')
 

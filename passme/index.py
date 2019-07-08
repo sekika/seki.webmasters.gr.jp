@@ -34,8 +34,9 @@ def main():
 
     # Get input strings
     f = cgi.FieldStorage()
-    getlang = f.getfirst('lang', 'none')
-    inputtext = f.getfirst('input', '')
+    site = f.getfirst('site', 'none')
+    char = f.getfirst('char', 'an')
+    len = f.getfirst('len', 'len')
 
     # Print header
     print('''<!DOCTYPE html>
@@ -60,7 +61,9 @@ def main():
 </select><br>
 文字数: サイト: <input type="text" name="len" id="len" size="2" maxlength="2" value="16">
 <p><input type="submit" value="追加する"></p>
-</form>''', flush=True)
+</form>
+
+<h2>サイト一覧</h2>''', flush=True)
 
     subprocess.check_call(['sh', 'output.sh'])
 
@@ -68,8 +71,8 @@ def main():
     for i in range(len(list)):
     	list[i] = list[i].strip(",[]'")
     print('<ul>')
-    for site in list:
-    	print('<li>{0}'.format(site))
+    for s in list:
+    	print('<li>{0}'.format(s))
     print('</ul>')
 
     

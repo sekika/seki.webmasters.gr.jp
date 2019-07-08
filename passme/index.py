@@ -21,7 +21,7 @@ def main():
     # Run test if invoked from shell
     if getenv('SCRIPT_NAME') is None:
         print('This program should be run from cgi.')
-        return
+        # return
 
     # Change encoding of stdout to utf-8
     # It is required becaue CGI script runs as another user and may not
@@ -50,7 +50,7 @@ def main():
 <h1>Passme cgi</h1>''')
 
 
-print('</body></html>')
+    print('</body></html>')
 
     return
 

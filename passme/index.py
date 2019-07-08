@@ -37,7 +37,8 @@ def main():
     site = f.getfirst('site', 'none')
     char = f.getfirst('char', 'an')
     plen = f.getfirst('len', '16')
-
+    desc = f.getfirst('desc', '')
+    
     # Print header
     print('''<!DOCTYPE html>
 <html lang="ja">
@@ -52,6 +53,14 @@ def main():
 <h1>Passme cgi</h1>''', flush=True)
 
     site = site.replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
+    if len(site) < 1:
+    	site = 'none'
+    if char not in ['a', 'n', 'an', 'ans']:
+        char = 'an'
+    plen = int(plen)
+    if plen < 4:
+        plen = 16
+    desc = desc.replace('"','').replace("'",'')
 
     if site != 'none':
         print('{0}'.format(site))

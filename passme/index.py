@@ -15,6 +15,7 @@ def main():
     """Passme CGI interface"""
     import cgi
     import io
+    import os
     import subprocess
 
     # Run test if invoked from shell

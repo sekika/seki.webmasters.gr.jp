@@ -55,6 +55,7 @@ def main():
     print(list)
     for i in range(len(list)):
     	list[i].strip(',')
+    	list[i].strip("'")
     print(list)
 
     # print footer

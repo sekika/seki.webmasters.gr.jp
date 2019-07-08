@@ -54,8 +54,8 @@ def main():
     list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
     print(list)
     for i in range(len(list)):
-    	list[i].strip(',')
-    	list[i].strip("'")
+    	list[i] = list[i].strip(',')
+    	list[i] = list[i].strip("'")
     print(list)
 
     # print footer

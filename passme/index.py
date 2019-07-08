@@ -65,8 +65,8 @@ def main():
     desc = desc.replace('"','').replace("'",'')
 
     if site != 'none':
-        with open("add.txt", "w", encoding="utf-8") as f:
-            f.write('{0}\n{1}\n{2}\n{3}\n\n'.format(site, char, plen, desc))
+        with open("add.sh", "w", encoding="utf-8") as f:
+            f.write('echo << EOF | passme add\n{0}\n{1}\n{2}\n{3}\n\nEOF'.format(site, char, plen, desc))
         print('<hr>')
 
 

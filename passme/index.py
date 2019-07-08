@@ -52,7 +52,7 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
 
-    site = site.replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
+    site = site.decode("utf-8").replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
     if len(site) < 1:
     	site = 'none'
     if char not in ['a', 'n', 'an', 'ans']:

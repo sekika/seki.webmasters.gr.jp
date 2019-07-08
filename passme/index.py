@@ -15,7 +15,7 @@ def main():
     """Passme CGI interface"""
     import cgi
     import io
-    import os
+    import subprocess
 
     # Run test if invoked from shell
     if os.getenv('SCRIPT_NAME') is None:
@@ -48,9 +48,8 @@ def main():
 
 <body>
 <h1>Passme cgi</h1>''', flush=True)
-    
-    os.system('pwd')
-    os.system('passme list')
+
+    list = subprocess.check_output('passme list')
 
 
     # print footer

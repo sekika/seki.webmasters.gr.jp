@@ -63,7 +63,8 @@ def main():
     desc = desc.replace('"','').replace("'",'')
 
     if site != 'none':
-        print('{0} {1} {2} {3}'.format(site, char, plen, desc))
+        with open("add.txt", "w") as f:
+            fileobj.write('{0} {1} {2} {3}'.format(site, char, plen, desc))
         
         
         print('<hr>')

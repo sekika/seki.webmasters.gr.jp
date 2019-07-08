@@ -2,8 +2,10 @@ DirectoryIndex index.py
 Options +ExecCGI
 AddHandler cgi-script py
 
-Order deny,allow
-deny from all
-allow from 61.192.163.82
-allow from 133.79.232.162
+<Files *>
+	AuthName      Password
+	AuthType      Basic
+	AuthUserFile  /home/seki/etc/noriko.txt
+	Require valid-user
+</Files>
 

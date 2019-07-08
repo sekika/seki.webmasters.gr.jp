@@ -51,7 +51,6 @@ def main():
 
 <body>
 <h1>Passme cgi</h1>''', flush=True)
-    print(site)
 
     site = site.replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
 
@@ -68,11 +67,7 @@ def main():
     if site != 'none':
         with open("add.txt", "w", encoding="utf-8") as f:
             f.write('{0}\n{1}\n{2}\n{3}\n\n'.format(site, char, plen, desc))
-        
-        
         print('<hr>')
-
-    print(site)
 
 
     print('''<form action="index.py" method="post">

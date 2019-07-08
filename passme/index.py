@@ -49,10 +49,7 @@ def main():
 
 <body>
 <h1>Passme cgi</h1>''', flush=True)
-
-
     list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
-    print(list)
     for i in range(len(list)):
     	list[i] = list[i].strip(",[]'")
     print('<ul>')

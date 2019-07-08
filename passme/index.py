@@ -49,10 +49,12 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
     
+    os.system('pwd')
     os.system('passme list')
 
 
     # print footer
+
     print('</body></html>')
 
     return

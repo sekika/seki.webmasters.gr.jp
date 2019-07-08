@@ -1,3 +1,3 @@
 #!/bin/sh
-echo "passme.html\nALL\n\n" | passme html
+echo "output/passme.html\nALL\n\n" | passme html
 

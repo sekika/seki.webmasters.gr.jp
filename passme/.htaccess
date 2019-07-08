@@ -1,0 +1,9 @@
+DirectoryIndex index.py
+Options +ExecCGI
+AddHandler cgi-script py
+
+Order deny,allow
+deny from all
+allow from 61.192.163.82
+allow from 133.79.232.162
+

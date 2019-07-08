@@ -55,8 +55,11 @@ def main():
     print(list)
     for i in range(len(list)):
     	list[i] = list[i].strip(",[]'")
-    print(list[0])
-    print(list[1])
+    print('<ul>')
+    for site in list:
+    	print('<li>{0}'.format(site))
+    print('</ul>')
+
     
     # print footer
 

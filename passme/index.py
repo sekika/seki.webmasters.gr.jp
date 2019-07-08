@@ -36,7 +36,7 @@ def main():
     f = cgi.FieldStorage()
     site = f.getfirst('site', 'none')
     char = f.getfirst('char', 'an')
-    len = f.getfirst('len', 'len')
+    plen = f.getfirst('len', '16')
 
     # Print header
     print('''<!DOCTYPE html>

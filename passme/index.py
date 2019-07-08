@@ -50,14 +50,16 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
 
-    subprocess.check_call(['python3', '-V'])
-    list = subprocess.check_output(['passme', 'list']).split()
+
+    list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
     print(list)
     print(list[0])
 
 
     # print footer
 
+    print('<ht>')
+    subprocess.check_call(['python3', '-V'])
     print('</body></html>')
 
     return

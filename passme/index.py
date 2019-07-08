@@ -49,9 +49,10 @@ def main():
 </head>
 
 <body>
-<h1>Passme cgi</h1>
+<h1>Passme cgi</h1>''', flush=True)
 
-<form action="index.py" method="post">
+    if site == 'none':
+        print('''<form action="index.py" method="post">
 サイト: <input type="text" name="site" id="site" size="10" maxlength="10" value=""><br>
 記号: <select name="char" id="char">
   <option value="an" selected>アルファベット + 数字
@@ -63,9 +64,11 @@ def main():
 説明<br><textarea name="desc" id="desc" rows="4" cols="20" wrap="off">
 </textarea></p>
 <p><input type="submit" value="追加する"></p>
-</form>
+</form>''', flush=True)
+    else:
+        print('{0}'.format(site))
 
-<h2>サイト一覧</h2>''', flush=True)
+    print('<h2>サイト一覧</h2>', flush=True)
 
     subprocess.check_call(['sh', 'output.sh'])
 

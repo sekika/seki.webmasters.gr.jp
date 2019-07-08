@@ -60,7 +60,7 @@ def main():
     plen = int(plen)
     if plen < 4:
         plen = 16
-    desc = desc.replace('"','').replace("'",'')
+    desc = desc.encode('utf-8').replace('"','').replace("'",'')
 
     if site != 'none':
         with open("add.txt", "w") as f:

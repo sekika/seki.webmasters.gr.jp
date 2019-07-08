@@ -50,7 +50,7 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
 
-    subprocess.check_call(['echo', '-e', '"passme.html\\nALL\\n\\n"', '|', 'passme', 'html'])
+    subprocess.check_call(['echo', '-e', '"passme.html\nALL\n\n"', '|', 'passme', 'html'])
 
     list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
     for i in range(len(list)):

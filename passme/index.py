@@ -74,7 +74,7 @@ def main():
         print('<hr>')
         site = 'none'
 
-    if site in ['add', 'list', 'edit', 'html', 'test', 'ALL')]:
+    if site in ['add', 'list', 'edit', 'html', 'test', 'ALL']:
         print('{0} は予約されています'.format(site))
         print('<hr>')
         site = 'none'

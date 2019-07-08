@@ -58,8 +58,6 @@ def main():
     if len(site) < 1:
     	site = 'none'
 
-    print(site)
-
     if char not in ['a', 'n', 'an', 'ans']:
         char = 'an'
     plen = int(plen)
@@ -73,6 +71,8 @@ def main():
         
         
         print('<hr>')
+
+    print(site)
 
 
     print('''<form action="index.py" method="post">

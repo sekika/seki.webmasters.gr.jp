@@ -49,7 +49,7 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
     
-    os.system('passme')
+    os.system('passme list')
 
 
     # print footer

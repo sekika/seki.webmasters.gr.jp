@@ -51,10 +51,11 @@ def main():
 <h1>Passme cgi</h1>''', flush=True)
 
 
-    list = subprocess.check_output(['passme', 'list']).decode("utf-8").strip('\[').strip('\]').split()
+    list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
     print(list)
-    print(list[0])
-
+    for i in range(len(list)):
+    	list[i].strip(',')
+    print(list)
 
     # print footer
 

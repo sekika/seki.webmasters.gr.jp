@@ -56,8 +56,9 @@ def main():
     for i in range(len(list)):
     	list[i] = list[i].strip(',')
     	list[i] = list[i].strip("'")
-    print(list)
-
+    print(list[0])
+    print(list[1])
+    
     # print footer
 
     print('<hr>', flush=True)

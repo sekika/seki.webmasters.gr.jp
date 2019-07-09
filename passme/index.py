@@ -109,7 +109,7 @@ def main():
         sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
         if site in sitekey.keys():
             key = sitekey[site]
-            print(key)
+            print('<textarea>{0}\n{1}\n{2}\n{3}</textarea>'.format(key[0],key[1],key[2],key[3]))
         else:
             print('追加失敗')
 

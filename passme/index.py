@@ -95,7 +95,7 @@ def main():
   <option value="n">数字のみ
 </select><br>
 文字数: サイト: <input type="text" name="len" id="len" size="2" maxlength="2" value="16"><br>
-説明<br><textarea name="desc" id="desc" rows="4" cols="20" wrap="off">
+説明<br><textarea name="desc" id="desc" rows="4" cols="30" wrap="off">
 </textarea></p>
 <p><input type="submit" value="追加する"></p>
 </form>''', flush=True)

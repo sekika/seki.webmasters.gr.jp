@@ -13,6 +13,7 @@ if True:  # True for showing detailed traceback
 
 def main():
     """Passme CGI interface"""
+    import ConfigObj
     import cgi
     import io
     import os
@@ -78,6 +79,7 @@ def main():
         print('<hr>')
         site = 'none'
 
+    # サイト追加
     if site != 'none':
         with io.open("add.sh", "w", encoding="utf-8") as f:
             f.write('export LANG=ja_JP.utf8\ncat << EOF | passme add > /dev/null\n{0}\n{1}\n{2}\n{3}\n\nEOF'.format(site, char, plen, desc))
@@ -104,12 +106,16 @@ def main():
 
     subprocess.check_call(['sh', 'output.sh'])
 
-    list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
-    for i in range(len(list)):
-    	list[i] = list[i].strip(",[]'")
+    config = ConfigObj('.passme')
+    SiteKeyFile = config["SiteKeyFile"]
+    sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
+    
+    # list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
+    # for i in range(len(list)):
+    #	list[i] = list[i].strip(",[]'")
 
     print('<ul>')
-    for s in list:
+    for s in sorted(sitekey.keys()):
     	print('<li>{0}'.format(s))
     print('</ul>')
 

@@ -109,8 +109,7 @@ def main():
         sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
         if site in sitekey.keys():
             key = sitekey[site]
-            c = ConfigObj(key)
-            # print('<textarea>{0}\n{1}\n{2}\n{3}</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],key['comment']))
+            print('<textarea>{0}\n{1}\n{2}\n{3}\n{4}\n{5}</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],key['comment']))
             c.write
         else:
             print('追加失敗')

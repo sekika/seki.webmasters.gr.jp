@@ -80,8 +80,7 @@ def main():
 
     if site != 'none':
         with io.open("add.sh", "w", encoding="utf-8") as f:
-            f.write('	
-export LANG=ja_JP.utf8\ncat << EOF | passme add > /dev/null\n{0}\n{1}\n{2}\n{3}\n\nEOF'.format(site, char, plen, desc))
+            f.write('export LANG=ja_JP.utf8\ncat << EOF | passme add > /dev/null\n{0}\n{1}\n{2}\n{3}\n\nEOF'.format(site, char, plen, desc))
         subprocess.check_call(['sh', 'add.sh'])
         # os.remove('add.sh')
         print('{0} 追加'.format(site))

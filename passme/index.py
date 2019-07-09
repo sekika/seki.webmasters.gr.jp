@@ -106,7 +106,12 @@ def main():
         subprocess.check_call(['sh', 'add.sh'])
         os.remove('add.sh')
         print('{0} 追加'.format(site))
-        print('<hr>')
+        sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
+        if site in sitekey.keys():
+            key = sitekey[site]
+            print(key)
+        else:
+            print('追加失敗')
 
     print('<a href="passme.html">パスワード生成</a>')
     

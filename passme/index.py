@@ -13,7 +13,7 @@ if True:  # True for showing detailed traceback
 
 def main():
     """Passme CGI interface"""
-    import ConfigObj
+    from configobj import ConfigObj
     import cgi
     import io
     import os

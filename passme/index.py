@@ -53,9 +53,9 @@ def main():
 <body>
 <h1>Passme cgi</h1>''', flush=True)
 
-    list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
-    for i in range(len(list)):
-    	list[i] = list[i].strip(",[]'")
+    config = ConfigObj('.passme')
+    SiteKeyFile = config["SiteKeyFile"]
+    sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
 
     site = site.replace(' ','').replace('<','').replace('>','').replace('&','').replace('"','').replace("'",'').replace('|','').replace('.','')
 
@@ -69,7 +69,7 @@ def main():
         plen = 16
     desc = desc.replace('"','').replace("'",'')
 
-    if site in list:
+    if site in sitekey.keys():
         print('{0} はすでにあります'.format(site))
         print('<hr>')
         site = 'none'
@@ -106,14 +106,8 @@ def main():
 
     subprocess.check_call(['sh', 'output.sh'])
 
-    config = ConfigObj('.passme')
-    SiteKeyFile = config["SiteKeyFile"]
-    sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
+    # sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
     
-    # list = subprocess.check_output(['passme', 'list']).decode("utf-8").split()
-    # for i in range(len(list)):
-    #	list[i] = list[i].strip(",[]'")
-
     print('<ul>')
     for s in sorted(sitekey.keys()):
     	print('<li>{0}'.format(s))

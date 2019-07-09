@@ -109,8 +109,13 @@ def main():
         sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
         if site in sitekey.keys():
             key = sitekey[site]
-            print('<textarea rows="10" cols="35">[{0}]\nhash = {1}\nchar = {2}\nlen = {3}\nseed = {4}\ncomment = {5}</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],key['comment']))
-            print('<a href="index.py">トップ</a>')
+            comment = key['comment']
+            if len(comment) == 0:
+                comment = '""'
+            if len(comment.splitlines()) > 1:
+                comment = "'''" + comment + "'''"
+            print('<textarea rows="10" cols="35">[{0}]\nhash = {1}\nchar = {2}\nlen = {3}\nseed = {4}\ncomment = {5}</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],comment))
+            print('<p><a href="index.py">トップ</a></p>')
         else:
             print('追加失敗')
 

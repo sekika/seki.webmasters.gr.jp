@@ -110,7 +110,7 @@ def main():
         if site in sitekey.keys():
             key = sitekey[site]
             print('<textarea rows="10" cols="35">[{0}]\nhash = {1}\nchar = {2}\nlen = {3}\nseed = {4}\ncomment = {5}</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],key['comment']))
-            c.write
+            print('<a href="index.py">トップ</a>')
         else:
             print('追加失敗')
 

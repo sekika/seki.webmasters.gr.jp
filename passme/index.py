@@ -105,11 +105,11 @@ def main():
             f.write('export LANG=ja_JP.utf8\ncat << EOF | passme add > /dev/null\n{0}\n{1}\n{2}\n{3}\n\nEOF'.format(site, char, plen, desc))
         subprocess.check_call(['sh', 'add.sh'])
         os.remove('add.sh')
-        print('{0} 追加'.format(site))
+        print('<p>{0} 追加</p>'.format(site))
         sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
         if site in sitekey.keys():
             key = sitekey[site]
-            print('<textarea>{0}\n{1}\n{2}\n{3}\n{4}\n{5}</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],key['comment']))
+            print('<textarea rows="10" cols="35">[{0}]\nhash = {1}\nchar = {2}\nlen = {3}\nseed = {4}\ncomment = {5}</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],key['comment']))
             c.write
         else:
             print('追加失敗')

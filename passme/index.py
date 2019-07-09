@@ -114,7 +114,7 @@ def main():
                 comment = '""'
             if len(comment.splitlines()) > 1:
                 comment = "'''" + comment + "'''"
-            print('<textarea rows="10" cols="35">[{0}]\nhash = {1}\nchar = {2}\nlen = {3}\nseed = {4}\ncomment = {5}</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],comment))
+            print('<textarea rows="10" cols="45">[{0}]\nhash = {1}\nchar = {2}\nlen = {3}\nseed = {4}\ncomment = {5}\n</textarea>'.format(site,key['hash'],key['char'],key['len'],key['seed'],comment))
             print('<p><a href="index.py">トップ</a></p>')
         else:
             print('追加失敗')

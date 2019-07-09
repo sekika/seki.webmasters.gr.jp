@@ -79,16 +79,8 @@ def main():
         print('<hr>')
         site = 'none'
 
-    # サイト追加
-    if site != 'none':
-        with io.open("add.sh", "w", encoding="utf-8") as f:
-            f.write('export LANG=ja_JP.utf8\ncat << EOF | passme add > /dev/null\n{0}\n{1}\n{2}\n{3}\n\nEOF'.format(site, char, plen, desc))
-        subprocess.check_call(['sh', 'add.sh'])
-        os.remove('add.sh')
-        print('{0} 追加'.format(site))
-        print('<hr>')
-
-    print('''<form action="index.py" method="post">
+    if site == 'none':
+        print('''<form action="index.py" method="post">
 サイト: <input type="text" name="site" id="site" size="10" maxlength="10" value=""><br>
 記号: <select name="char" id="char">
   <option value="an" selected>アルファベット + 数字
@@ -101,17 +93,20 @@ def main():
 </textarea></p>
 <p><input type="submit" value="追加する"></p>
 </form>''', flush=True)
-
-    print('<h2>サイト一覧</h2>', flush=True)
-
-    subprocess.check_call(['sh', 'output.sh'])
-
-    # sitekey = ConfigObj(SiteKeyFile, encoding='utf-8')
-    
-    print('<ul>')
-    for s in sorted(sitekey.keys()):
-    	print('<li>{0}'.format(s))
-    print('</ul>')
+        print('<h2>サイト一覧</h2>', flush=True)
+        subprocess.check_call(['sh', 'output.sh'])
+        print('<ul>')
+        for s in sorted(sitekey.keys()):
+    	    print('<li>{0}'.format(s))
+        print('</ul>')
+    else:
+        # 追加
+        with io.open("add.sh", "w", encoding="utf-8") as f:
+            f.write('export LANG=ja_JP.utf8\ncat << EOF | passme add > /dev/null\n{0}\n{1}\n{2}\n{3}\n\nEOF'.format(site, char, plen, desc))
+        subprocess.check_call(['sh', 'add.sh'])
+        os.remove('add.sh')
+        print('{0} 追加'.format(site))
+        print('<hr>')
 
     print('<a href="passme.html">パスワード生成</a>')
     

@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# Passme sitekey file
+
+[dummy1]
+hash = sha3_384
+char = ans
+len = 12
+seed = "oikh#n[9@k8HJ/#zwhe]85G@l4C8ow"
+comment = http://seki.webmasters.gr.jp/passme/index.py

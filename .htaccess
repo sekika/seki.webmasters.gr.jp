@@ -3,6 +3,10 @@ AddType application/x-httpd-cgi .cgi
 
 RedirectMatch 404 /\.git
 
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+
 <Files CVS>
   order allow,deny
   deny from all

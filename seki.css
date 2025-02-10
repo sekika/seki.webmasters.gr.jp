@@ -130,6 +130,10 @@ pre {
   background-color: #f6f6f6;
 }
 
+pre.courier {
+  font-family: Courier;
+}
+
 strong {
 	color: red;
 	font-weight: bold;

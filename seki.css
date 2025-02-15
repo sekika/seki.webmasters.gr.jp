@@ -1,7 +1,6 @@
 body {
   background-image: url(./back/58.png);
   color: black;
-  font-size: 15px;
   border-left: solid 3px #40C0C0;
   border-right: solid 3px #80C0C0;
   padding-left: 15px;
@@ -10,14 +9,14 @@ body {
 
 h1 {
   color            : #000080;
-  font-size        : 30px; 
+  font-size        : 2em; 
   font-style       : italic;
   text-align       : center; 
   font-weight      : bolder;  
 }
 
 h2 {
-  font-size        : 24px; 
+  font-size        : 1.5em; 
   text-align       : left; 
   font-weight      : bold;
   color            : #408080; 
@@ -30,7 +29,7 @@ h2 {
 }
 
 h3 {
-  font-size        : 20px;
+  font-size        : 1.2em;
   text-align       : left;
   color            : #009000;
   font-weight      : bold; 
@@ -42,7 +41,7 @@ h3 {
   border-width     : 1px 0em 0em 10px;}
 
 h4 {
-  font-size        : 17px;
+  font-size        : 1.1em;
   font-weight      : bold;
   text-align       : left;
   color            : #800080;
@@ -55,7 +54,6 @@ h4 {
 }
 
 blockquote {
-  font-size        : 15px;
   color            : black;
   color: #330000;
   background-color: rgb(95%, 100%, 95%);
@@ -64,7 +62,6 @@ blockquote {
   border-color: rgb(50%, 80%, 50%);
   border-width:4pt
 }
-
 
 a.name  {
   text-decoration  : none;
@@ -75,7 +72,6 @@ A:Hover	{
 }
 
 p {
-  font-size        : 15px;
   color            : black;
   text-indent: 1em;
 }
@@ -87,8 +83,9 @@ p.note {
 }
 
 dl.menu {
-  font-size        : 32px;
-  color            : blue;
+  font-size: 2em;
+  line-height: 1.7;
+  color: blue;
   text-align: center;
   margin-left: 20%;
   margin-right: 20%;
@@ -100,23 +97,14 @@ dl.menu {
 }
 
 dl.list {
-  font-size        : 15px;
   color            : black;
   margin-left: 3%;
 }
 
 dl.history {
-  font-size        : 15px;
   color            : black;
   text-indent: -8em;
   margin-left: 10em;
-}
-
-dl.mirror {
-  color            : #000080;
-  text-align       : center; 
-  font-weight      : bolder;  
-  font-size        : 15px;
 }
 
 pre {
@@ -140,7 +128,6 @@ strong {
 }
 
 dl dd {
-	font-size        : 15px;
 	color            : black;
 	padding-top: 0.3em;
 	padding-bottom: 0.3em;
@@ -151,7 +138,6 @@ ul{
 }
 
 em {
-	font-size        : 15px;
 	color: #330000;
 }
 
@@ -181,7 +167,7 @@ div.footer {
 
 div.title {
   color: green;
-  font-size: 120%;
+  font-size: 1.2em;
 }
 
 % http://coliss.com/articles/build-websites/operation/css/444.html

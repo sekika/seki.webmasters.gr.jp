@@ -9,14 +9,14 @@ body {
 
 h1 {
   color            : #000080;
-  font-size        : 2em; 
+  font-size        : 2.5em; 
   font-style       : italic;
   text-align       : center; 
   font-weight      : bolder;  
 }
 
 h2 {
-  font-size        : 1.5em; 
+  font-size        : 2em; 
   text-align       : left; 
   font-weight      : bold;
   color            : #408080; 
@@ -29,7 +29,7 @@ h2 {
 }
 
 h3 {
-  font-size        : 1.2em;
+  font-size        : 1.5em;
   text-align       : left;
   color            : #009000;
   font-weight      : bold; 
@@ -41,7 +41,7 @@ h3 {
   border-width     : 1px 0em 0em 10px;}
 
 h4 {
-  font-size        : 1.1em;
+  font-size        : 1.2em;
   font-weight      : bold;
   text-align       : left;
   color            : #800080;
@@ -84,7 +84,7 @@ p.note {
 
 dl.menu {
   font-size: 2em;
-  line-height: 1.7;
+  line-height: 2;
   color: blue;
   text-align: center;
   margin-left: 20%;

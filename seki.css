@@ -193,6 +193,13 @@ table tr td.t {
 	background-color : brown;
 }
 
+img.one {
+  width: min(80%, 400px);
+  height: auto;
+  margin:auto;
+  display: block
+}
+
 % http://coliss.com/articles/build-websites/operation/css/444.html
 
 a[href^="http://"]{

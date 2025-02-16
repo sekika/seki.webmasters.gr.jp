@@ -2,10 +2,11 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <TITLE>レーティングの計算方法について</TITLE>
   <META name="author" content="Katsutoshi Seki">
   <META name="copyright" content="&copy; 1998 Katsutoshi Seki">
-  <LINK REL="stylesheet" TYPE="text/css" HREF="gammon.css">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="../seki.css">
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </HEAD>
 
@@ -29,7 +30,7 @@ E: 期待勝率, D: レーティングの差 (自分 - 相手), N: マッチの�
 </p>
 <p>このときのレーティング差と期待勝率との関係を図示します。</p>
 
-<img src="bgrate.png" alt="winning probability" width="393">
+<img src="bgrate.png" alt="winning probability" style="width: min(80%, 400px); height: auto;">
 
 <p>
 そして、K (Match value) が\(K = 4\sqrt{N}\)から計算されます。このようにして求めれたEとKから、レート変動が以下のように計算されます。
@@ -92,7 +93,7 @@ $$K(1-E) = 4\sqrt{5}(1-0.374) = 3.35$$
 このように、レートの計算には期待勝率がレーティング差のロジスティック関数であらわされるという計算法と、線形であらわされるという計算があります。そこで、ロジスティック関数と線形関数において、a=400とした計算を比較してみました。
 </p>
 
-<img src="rate.png" alt="winning probability" width="393" height="364">
+<img src="rate.png" alt="winning probability" style="width: min(80%, 400px); height: auto;">
 
 <p>
 線形関数については、レーティング差が400を超えると、期待勝率が0から1の間におさまらなくなります。そこで、線形関数を採用する場合には、それ以上のレート差の戦いは無効であるとする必要があります。期待勝率が2割から8割の間、つまりレート差が240以内の間では、線形とロジスティックは非常に似通った関数形を示すのに対し、レート差が240以上になると、両者の差が開きます。したがって、期待勝率として線形関数を採用している場合には、このグラフの場合はレート差が400付近の相手と戦う場合に、レート上位者がかなり「損をする」といった現象が生じます。

@@ -170,6 +170,25 @@ div.title {
   font-size: 1.2em;
 }
 
+table tr td.n {
+	text-align: center;
+	background-color : #eef;
+}
+
+table tr td.d {
+	text-align: left;
+}
+
+table tr td.h {
+	text-align: center;
+	background-color : #cfc;
+}
+
+table tr td.t {
+	text-align: center;
+	background-color : brown;
+}
+
 % http://coliss.com/articles/build-websites/operation/css/444.html
 
 a[href^="http://"]{
